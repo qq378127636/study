@@ -6,9 +6,9 @@
 	<!--支持多设备-->
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<script src="script/jquery/jquery.min.js"></script>
 	<link href="style/css/bootstrap/css/bootstrap.css" rel='stylesheet' type='text/css' />
 	<link href="style/css/index.css" rel='stylesheet' type='text/css' />
+	<link rel="stylesheet" href="https://unpkg.com/element-ui@2.0.3/lib/theme-chalk/index.css">
 </head>
 
 
@@ -41,7 +41,7 @@
 			 <ul>
 				 <li class="active"><a href="#">Home</a><!--active控制目标菜单颜色-->
 					<ul>
-						<li><a href="sublist.html">111</a></li>
+						<li><a href="javascript:void(0)" content="grid.html">111</a></li>
 						<li><a href="#">Watches</a></li>
 						<li><a href="#">Sunglasses</a></li>
 					</ul>
@@ -55,22 +55,39 @@
 
 
 <!--------------------------------------------- right ------------------------------------->
-<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">		
-	<img src="style/images/test.PNG" class="img-responsive">
+<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" style="background:#fff;">
 </div>
 
 
+<!--------------------------------------------- else ------------------------------------->
 <!-- div并排 -->
 <div class="clearfix"></div>
 
 
+
+
+<!--------------------------------------------- script ------------------------------------->
+<script src="script/jquery/jquery.min.js"></script>
+<script src="https://unpkg.com/vue/dist/vue.js"></script>
+<script src="https://unpkg.com/element-ui@2.0.3/lib/index.js"></script>
 <script>
+    $(".main").load("grid.html",function(){});
+	//缩小时的菜单
 	$( ".top-navigation" ).click(function() {
 		var nav = $( ".drop-navigation" );
 		if(nav.hasClass('hide1')){
 			nav.removeClass("hide1").addClass("show");
 		}else{
             nav.removeClass("show").addClass("hide1");
+		}
+	});
+
+
+	//局部刷新
+	$(".top-menu li").click(function(){
+	    var links = $(this).find('a').attr("content")
+	    if(links){
+	        $(".main").load(links,function(){});
 		}
 	});
 </script>

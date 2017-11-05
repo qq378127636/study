@@ -1,10 +1,200 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>grid</title>
-</head>
-<body>
+<!-- Form表单-->
+<div id="formDemo" style="padding-top:30px;">
+    <el-form :model="modelDemo" ref="modelDemo"  :inline=true><!-- model:表单数据对象  ref:在element-ui里重写了这个vue的ref  this.$refs.refPage.currentValue 这样就可以拿到值了-->
+        <el-row type="flex" >
+            <el-col :push=1>
+                <el-form-item label="名称" prop="name"><!-- 表单域 model 字段，在使用 validate、resetFields 方法的情况下，该属性是必填的-->
+                    <el-input v-model="modelDemo.name" ></el-input><!--v-model: 使用vue获取数据 -->
+                </el-form-item>
+            </el-col>
 
-</body>
-</html>
+            <el-col :push=1>
+                <el-form-item label="地址" prop="address">
+                    <el-select v-model="modelDemo.address">
+                        <el-option label="区域一" value="shanghai"></el-option>
+                        <el-option label="区域二" value="beijing"></el-option>
+                    </el-select>
+                 </el-form-item>
+            </el-col>
+        </el-row>
+
+        <el-row>
+            <el-col :push=1>
+                <el-form-item label="时间" prop="date" >
+                    <el-date-picker v-model="modelDemo.date" type="datetimerange" range-separator="至" start-placeholder="开始日期" end-placeholder="结束日期"></el-date-picker>
+                </el-form-item>
+            </el-col>
+        </el-row>
+
+        <el-row  type="flex" justify="center">
+            <!-- toolBar -->
+            <el-form-item>
+                <el-button type="primary" icon="search" @click="find">查询</el-button> <!--type:按钮类型  icon：图标类名 @click：vue事件  -->
+                <el-button type="success" icon="plus" @click="add">新增</el-button>
+                <el-button @click="resetForm('modelDemo')">重置</el-button>
+            </el-form-item>
+        </el-row>
+    </el-form>
+</div>
+
+
+
+
+
+<!-- table -->
+<div id="tbDemo">
+    <el-row>
+        <el-table :data="tableData" style="width: 100%">
+
+            <el-table-column type="selection" width="55"></el-table-column> <!-- type：列的类型，selection为多选框 -->
+
+            <el-table-column label="名称" min-width="25%" prop="name"></el-table-column>
+
+            <el-table-column label="地址" min-width="30%" prop="address" :show-overflow-tooltip=true> </el-table-column>
+
+            <el-table-column label="时间" min-width="30%" prop="date"></el-table-column>
+
+            <el-table-column label="操作" width="180">
+                <template slot-scope="scope"><!---->
+                    <el-button type="success" :plain=true size="mini" icon="el-icon-edit" @click="handleEdit(scope.$index, scope.row)"></el-button>
+                    <el-button type="success" :plain=true size="mini" icon="el-icon-search" @click="handleDelete(scope.$index, scope.row)"></el-button>
+                </template>
+            </el-table-column>
+        </el-table>
+    </el-row>
+</div>
+
+
+
+<!-- page -->
+<div id="pageDemo"  style="margin-top: 20px">
+    <el-row>
+        <el-col :span="6">
+            <el-button :plain=true type="danger" size="small" icon="delete" @click="">删除所选</el-button>
+        </el-col>
+
+        <el-col :span="18" >
+            <el-pagination
+                    style="float: right"
+                    @size-change="handleSizeChange"
+                    @current-change="handleCurrentChange"
+                    :current-page="currentPage"
+                    :page-sizes="[50, 100, 150, 300]"
+                    :page-size="100"
+                    layout="total, sizes, prev, pager, next, jumper"
+                    :total="400">
+            </el-pagination>
+        </el-col>
+    </el-row>
+</div>
+
+
+
+
+<script>
+
+    //创建构造器：定义模板的数据、函数
+    var formDemo = Vue.extend({
+        data() {
+            return {
+                modelDemo: {
+                    name: '',
+                    address: '',
+                    date: ''
+                }
+            }
+        },
+        methods:{
+            find() {
+                alert("find");
+            },
+            add(){
+                alert("add");
+            },
+            resetForm(formName) {
+                this.$refs[formName].resetFields();
+            }
+        }
+    });
+
+    //把Ctor实例(数据、函数)挂载到元素上，这就是VUE的功能
+    new formDemo().$mount('#formDemo');
+
+
+
+
+
+
+
+
+    var tbDemo = Vue.extend({
+        data() {
+            return {
+                tableData: [{
+                    date: '2016-05-02',
+                    name: '王小虎',
+                    address: '上海市普陀区金沙江路 1518 弄'
+                }, {
+                    date: '2016-05-04',
+                    name: '王小虎',
+                    address: '上海市普陀区金沙江路 1517 弄'
+                }, {
+                    date: '2016-05-01',
+                    name: '王小虎',
+                    address: '上海市普陀区金沙江路 1519 弄'
+                }, {
+                    date: '2016-05-03',
+                    name: '王小虎',
+                    address: '上海市普陀区金沙江路 1516 弄'
+                },{
+                    date: '2016-05-02',
+                    name: '王小虎',
+                    address: '上海市普陀区金沙江路 1518 弄'
+                }]
+            }
+        },
+        methods: {
+            handleEdit(index, row) {
+                alert(row);
+            },
+            handleDelete(index, row) {
+                alert(row);
+            }
+        }
+    });
+    new tbDemo().$mount('#tbDemo');
+
+
+
+
+    var pageDemo = Vue.extend({
+        data() {
+            return {
+                currentPage: 4
+            };
+        },
+        methods: {
+            handleSizeChange(val) {
+                console.log(`每页 ${val} 条`);
+            },
+            handleCurrentChange(val) {
+                console.log(`当前页: ${val}`);
+            }
+        }
+    });
+    new pageDemo().$mount('#pageDemo');
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -121,12 +121,15 @@ span.menu {
 }
 
 .main {
-    padding: 60px 0 25px 2%;
+    padding: 0 2% 60px 2%;
 }
 
 .main {
-    margin-left: 16.666667%;
-    width: 81.333333%;
+    margin-left: 18.666667%;
+    width: 79.333333%;
+    margin-top: 60px;
+    margin-bottom: 31px;
+    border-radius: 10px;
 }
 
 @media (max-width: 1080px){
@@ -202,9 +205,9 @@ span.menu {
 }
 
 @media (max-width: 1440px){
-    .main{margin-left:18%;
-        width: 80.333333%;
-        padding: 60px 0 25px 3%;}
+    .main{    margin-left: 22%;
+        width: 75.333333%;
+        padding: 3% 0 25px 3%;}
     .sidebar {
         width: 19%;
     }
@@ -219,9 +222,9 @@ span.menu {
         width: 20%;
 
     }
-    .main{margin-left:19%;
-        width: 78.333333%;
-        padding: 60px 0 25px 48px;}
+    .main{    margin-left: 23%;
+        width: 74.333333%;
+        padding: 0 2% 25px 2%;}
 }
 
 @media (max-width: 1080px){
@@ -229,8 +232,9 @@ span.menu {
         width: 22%;
 
     }
-    .main{margin-left:21%;    width: 77.333333%;
-        padding: 60px 0 25px 25px;}
+    .main{    margin-left: 25%;
+        width: 72.333333%;
+        padding: 0 2% 25px 2%;}
     .sidebar h1 a {
         font-size: 1em;
     }
@@ -247,8 +251,12 @@ span.menu {
 @media (max-width: 900px){
     .sidebar h1 a {
         margin-left: 10px;
-    }.main{margin-left:25%;    width: 73.333333%;
-         padding: 60px 0 25px 2%;}
+    }
+    .main{
+        margin-left: 29%;
+        width: 67.333333%;
+        padding: 0 2% 25px 2%;
+    }
     .sidebar h1 a {
         font-size: 0.875em;
     }
@@ -314,8 +322,11 @@ span.menu {
         width: 39%;
         font-size: 1em;
     }
-    .main{  width: 97.333333%;
-        padding: 25px 0 25px 2%; margin-left:0;}
+    .main{
+        width: 94.333333%;
+        padding: 0 2% 25px 2%;
+        margin-left: 3%;
+    }
     .hide1{display:none;}
     .show{display:block;}
 }
