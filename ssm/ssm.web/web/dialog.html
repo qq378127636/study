@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>dialog</title>
+
+    <link rel="stylesheet" href="style/eleIndex.css">
+    <script src="script/jquery/jquery.min.js"></script>
+    <script src="script/vue/vue.min.js"></script>
+    <script src="script/eleIndex.js"></script>
+</head>
+<body>
+
+<div id="app">
+
+    <!-- Form -->
+    <el-button type="text" @click="dialogFormVisible = true">打开嵌套表单的 Dialog</el-button>
+
+    <el-dialog title="收货地址" :visible.sync="dialogFormVisible"  :close-on-click-modal="false">
+
+        <el-form :model="form">
+
+
+            <el-form-item label="级联" :label-width="formLabelWidth">
+                <el-cascader :options="options" v-model="form.date" @change="handleChange">
+                </el-cascader>
+            </el-form-item>
+
+
+        </el-form>
+
+
+        <div slot="footer" class="dialog-footer">
+            <el-button @click="dialogFormVisible = false">取 消</el-button>
+            <el-button type="primary" @click="submict">确 定</el-button>
+        </div>
+    </el-dialog>
+</div>
+
+
+
+
+
+<script>
+
+    var Main = {
+        data() {
+            return {
+                dialogFormVisible: false,
+                form: {},
+                formLabelWidth: '120px',
+
+                options: [{
+                    value: 'zhinan',
+                    label: '指南',
+                    children: [{
+                        value: 'shejiyuanze',
+                        label: '设计原则',
+                        children: [{
+                            value: 'yizhi',
+                            label: '一致'
+                        }]
+                    }]
+                }]
+
+
+            };
+        },
+        methods: {
+            handleChange(value) {
+                console.log(value);
+            },
+            submict(){
+                debugger;
+
+                $.ajax({url: 'demo/findList', type:'get',
+                    data: this.form
+                });
+            }
+        }
+    };
+    var Ctor = Vue.extend(Main)
+    new Ctor().$mount('#app')
+</script>
+</body>
+
+
+</html>
