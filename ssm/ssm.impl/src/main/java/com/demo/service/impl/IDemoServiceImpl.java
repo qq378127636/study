@@ -1,10 +1,12 @@
 package com.demo.service.impl;
 
+import com.demo.Demo;
 import com.demo.dao.IDemoDao;
 import com.demo.service.IDemoService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
+import java.util.Map;
 
 
 /**
@@ -13,12 +15,18 @@ import org.springframework.stereotype.Service;
 @Service
 public class IDemoServiceImpl implements IDemoService{
 
-    @Autowired
+    @Resource
     private IDemoDao iDemoDao;
 
     @Override
     public String findName(Integer id) {
 
         return iDemoDao.findName(id);
+    }
+
+    @Override
+    public Map<String, Object> findList(Demo demo) {
+        iDemoDao.selectByPageNumSize(demo);
+        return null;
     }
 }

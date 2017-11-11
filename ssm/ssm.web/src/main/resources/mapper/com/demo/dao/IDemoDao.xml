@@ -4,7 +4,12 @@
 <mapper namespace="com.demo.dao.IDemoDao">
 
 	<select id="findName" resultType="java.lang.String" >
-		SELECT name FROM demo WHERE id=1;
+		SELECT name FROM demo
+	</select>
+
+
+	<select id="selectByPageNumSize" resultType="com.demo.Demo" >
+		SELECT name FROM demo
 	</select>
 
 </mapper>

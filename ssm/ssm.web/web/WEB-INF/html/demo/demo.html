@@ -1,10 +1,11 @@
 <!-- Form表单-->
 <div id="formDemo" style="padding-top:30px;">
-    <el-form :model="modelDemo" ref="modelDemo"  :inline=true><!-- model:表单数据对象  ref:在element-ui里重写了这个vue的ref  this.$refs.refPage.currentValue 这样就可以拿到值了-->
-        <el-row type="flex" >
+    <el-form :model="modelDemo" ref="modelDemo" :inline=true>
+        <!-- model:表单数据对象  ref:在element-ui里重写了这个vue的ref  this.$refs.refPage.currentValue 这样就可以拿到值了-->
+        <el-row type="flex">
             <el-col :push=1>
                 <el-form-item label="名称" prop="name"><!-- 表单域 model 字段，在使用 validate、resetFields 方法的情况下，该属性是必填的-->
-                    <el-input v-model="modelDemo.name" ></el-input><!--v-model: 使用vue获取数据 -->
+                    <el-input v-model="modelDemo.name"></el-input><!--v-model: 使用vue获取数据 -->
                 </el-form-item>
             </el-col>
 
@@ -14,31 +15,30 @@
                         <el-option label="区域一" value="shanghai"></el-option>
                         <el-option label="区域二" value="beijing"></el-option>
                     </el-select>
-                 </el-form-item>
+                </el-form-item>
             </el-col>
         </el-row>
 
         <el-row>
             <el-col :push=1>
-                <el-form-item label="时间" prop="date" >
-                    <el-date-picker v-model="modelDemo.date" type="datetimerange" range-separator="至" start-placeholder="开始日期" end-placeholder="结束日期"></el-date-picker>
+                <el-form-item label="时间" prop="date">
+                    <el-date-picker v-model="modelDemo.date"  type="datetimerange" range-separator="至"
+                                    start-placeholder="开始日期" end-placeholder="结束日期"></el-date-picker>
                 </el-form-item>
             </el-col>
         </el-row>
 
-        <el-row  type="flex" justify="center">
+        <el-row type="flex" justify="center">
             <!-- toolBar -->
             <el-form-item>
-                <el-button type="primary" icon="search" @click="find">查询</el-button> <!--type:按钮类型  icon：图标类名 @click：vue事件  -->
+                <el-button type="primary" icon="search" @click="find">查询</el-button>
+                <!--type:按钮类型  icon：图标类名 @click：vue事件  -->
                 <el-button type="success" icon="plus" @click="add">新增</el-button>
                 <el-button @click="resetForm('modelDemo')">重置</el-button>
             </el-form-item>
         </el-row>
     </el-form>
 </div>
-
-
-
 
 
 <!-- table -->
@@ -50,14 +50,16 @@
 
             <el-table-column label="名称" min-width="25%" prop="name"></el-table-column>
 
-            <el-table-column label="地址" min-width="30%" prop="address" :show-overflow-tooltip=true> </el-table-column>
+            <el-table-column label="地址" min-width="30%" prop="address" :show-overflow-tooltip=true></el-table-column>
 
             <el-table-column label="时间" min-width="30%" prop="date"></el-table-column>
 
             <el-table-column label="操作" width="180">
                 <template slot-scope="scope"><!---->
-                    <el-button type="success" :plain=true size="mini" icon="el-icon-edit" @click="handleEdit(scope.$index, scope.row)"></el-button>
-                    <el-button type="success" :plain=true size="mini" icon="el-icon-search" @click="handleDelete(scope.$index, scope.row)"></el-button>
+                    <el-button type="success" :plain=true size="mini" icon="el-icon-edit"
+                               @click="handleEdit(scope.$index, scope.row)"></el-button>
+                    <el-button type="success" :plain=true size="mini" icon="el-icon-search"
+                               @click="handleDelete(scope.$index, scope.row)"></el-button>
                 </template>
             </el-table-column>
         </el-table>
@@ -68,7 +70,7 @@
             <el-button :plain=true type="danger" size="small" icon="delete" @click="">删除所选</el-button>
         </el-col>
 
-        <el-col :span="18" >
+        <el-col :span="18">
             <el-pagination
                     style="float: right"
                     @size-change="handleSizeChange"
@@ -84,21 +86,17 @@
 </div>
 
 
-
-
-
-
 <script>
 
     var tbDemo = new Vue({
-        el:"#tbDemo",
+        el: "#tbDemo",
         data: {
             currentPage: 1,
-            pageSize:10
+            pageSize: 10
         },
         created() {
-            this.tableData =null;
-            this.total=100;
+            this.tableData = null;
+            this.total = 100;
         },
         methods: {
 
@@ -112,22 +110,34 @@
                 alert("pageSize" + val)
             },
             handleCurrentChange(val) {
-                alert("CurrentChange" + val +this.total)
+                alert("CurrentChange" + val + this.total)
             }
         }
     });
 
 
-
     //创建构造器：定义模板的数据、函数
     var formDemo = new Vue({
-        el:"#formDemo",
-        data:{
-            modelDemo:{}
+        el: "#formDemo",
+        data: {
+            modelDemo: {}
         },
-        methods:{
+        methods: {
             find() {
-                $.ajax({url:'demo/findList',type:'get',data:{name:this.modelDemo.name,pageSize:tbDemo.pageSize}});
+
+                var  ids = new Array();
+                ids.push("1");
+                ids.push("1");
+debugger;
+                $.ajax({url: 'demo/findList2', type:'get',
+                    /*contentType:"application/json",*/
+                    data: {ids:ids}
+                });
+
+
+
+
+
             },
             add(){
                 alert("add");
@@ -137,9 +147,9 @@
             }
         }
     });
+
+
 </script>
-
-
 
 
 
