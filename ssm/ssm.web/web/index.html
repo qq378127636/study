@@ -8,7 +8,7 @@
 
 	<link href="style/css/bootstrap/css/bootstrap.css" rel='stylesheet' type='text/css' />
 	<link href="style/css/index.css" rel='stylesheet' type='text/css' />
-	<link rel="stylesheet" href="style/eleIndex.css">
+	<link rel="stylesheet" href="script/element-ui/css/eleIndex.css">
 </head>
 
 
@@ -51,7 +51,7 @@
 				<li><a href="#" content="/ssm/demo/grid">About</a></li>
 
 
-				<li><a href="/ssm/demo/aa">Aboutss</a></li>
+				<li><a href="#">Aboutss</a></li>
 			</ul>
 		</div>
 	</div>
@@ -73,17 +73,15 @@
 <!--------------------------------------------- script ------------------------------------->
 <script src="script/jquery/jquery.min.js"></script>
 <script src="script/vue/vue.min.js"></script>
-<script src="script/eleIndex.js"></script>
+<script src="script/element-ui/js/eleIndex.js"></script>
 <script>
-	var linkss = window.location.href,index = linkss.indexOf('#!');
-	 if(index>=1){
-	 str = linkss.substr(index+2,linkss.length-1);
-	 $(".main").load(str,function(){
-	 });
-	 }
+
+
 
 
     // $(".main").load("grid.html",function(){});
+
+
     //缩小时的菜单
 	  $( ".top-navigation" ).click(function() {
         var nav = $( ".drop-navigation" );
@@ -95,15 +93,24 @@
     });
 
 
-    //局部刷新
+    //实现原路径刷新
+    var linkss = window.location.href;
+    var index = linkss.indexOf('#!');
 
-	 $(".top-menu li").click(function(){
-		var links = $(this).find('a').attr("content")
-		 if(links){
-		 history.pushState({},'aa',"#!"+links);
-		 $(".main").load(links,function(){
-		 });
-		 }
+    if(index>=1){
+        str = linkss.substr(index+2,linkss.length-1);
+        $(".main").load(str,function(){});
+    }
+
+
+    //局部刷新
+	$(".top-menu li").click(function(){
+		var links = $(this).find('a').attr("content");
+
+		if(links){
+			 history.pushState({},'aa',"#!"+links);
+			 $(".main").load(links,function(){});
+		}
     });
 </script>
 </body>
