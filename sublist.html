@@ -1,0 +1,316 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>demo</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<!--支持多设备-->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
+	<link rel="stylesheet" href="css/eleIndex.css">
+</head>
+
+
+<body>
+
+
+
+<!-- table -->
+<div id="tbDemo" style="max-height: 320px; overflow-y: auto">
+	<el-row>
+		<el-table :data="tableData" style="width: 100%" @selection-change="changeFun">
+
+			<el-table-column type="selection" width="55"  @selection-change="changeFun"></el-table-column> <!-- type：列的类型，selection为多选框 -->
+
+			<el-table-column label="名称" min-width="25%" prop="name"></el-table-column>
+
+			<el-table-column label="地址" min-width="30%" prop="address" :show-overflow-tooltip=true></el-table-column>
+
+			<el-table-column label="时间" min-width="30%" prop="date"></el-table-column>
+
+			<el-table-column label="操作" width="180">
+				<template slot-scope="scope"><!---->
+					<el-button type="success" :plain=true size="mini" icon="el-icon-edit"
+							   @click="handleEdit(scope.$index, scope.row)"></el-button>
+					<el-button type="success" :plain=true size="mini" icon="el-icon-search"
+							   @click="handleDelete(scope.$index, scope.row)"></el-button>
+				</template>
+			</el-table-column>
+		</el-table>
+	</el-row>
+
+	<el-row>
+		<el-col :span="6">
+			<el-button :plain=true type="danger" size="small" icon="delete" @click="">删除所选</el-button>
+		</el-col>
+	</el-row>
+
+</div>
+<div style="margin: 20px 0;" id="selectIcon">
+	<el-row>
+		<el-col style="text-align: center">
+			<el-button :plain=true type="danger" size="small" icon="delete" @click="selectData">下</el-button>
+			<el-button :plain=true type="danger" size="small" icon="delete" @click="selectData2">上</el-button>
+		</el-col>
+	</el-row>
+</div>
+<!-- table2 -->
+<div id="tbDemo2" style="max-height: 320px; overflow-y: auto">
+	<el-row>
+		<el-table :data="tableData2" style="width: 100%" @selection-change="changeFun">
+
+			<el-table-column type="selection" width="55"  @selection-change="changeFun"></el-table-column> <!-- type：列的类型，selection为多选框 -->
+
+			<el-table-column label="名称" min-width="25%" prop="name"></el-table-column>
+
+			<el-table-column label="地址" min-width="30%" prop="address" :show-overflow-tooltip=true></el-table-column>
+
+			<el-table-column label="时间" min-width="30%" prop="date"></el-table-column>
+
+			<el-table-column label="操作" width="180">
+				<template slot-scope="scope"><!---->
+					<el-button type="success" :plain=true size="mini" icon="el-icon-edit"
+							   @click="handleEdit(scope.$index, scope.row)"></el-button>
+					<el-button type="success" :plain=true size="mini" icon="el-icon-search"
+							   @click="handleDelete(scope.$index, scope.row)"></el-button>
+				</template>
+			</el-table-column>
+		</el-table>
+	</el-row>
+
+	<el-row>
+		<el-col :span="6">
+			<el-button :plain=true type="danger" size="small" icon="delete" @click="">删除所选</el-button>
+		</el-col>
+	</el-row>
+</div>
+<script src="js/jquery.min.js"></script>
+<script src="js/vue.js"></script>
+<script src="js/eleIndex.js"></script>
+<script>
+
+    var selectIcon = new Vue({
+        el: "#selectIcon",
+        methods: {
+
+            selectData(){
+                console.log(tbDemo.multipleSelection[0].name)
+
+            },
+            selectData2(){
+                console.log(tbDemo2.multipleSelection[0].name)
+            }
+        }
+    });
+
+    var tbDemo = new Vue({
+        el: "#tbDemo",
+        methods: {
+            changeFun(val) {
+                this.multipleSelection = val;
+            },
+            handleClick(row) {
+                console.log(row);
+            },
+			selectData(){
+                console.log(this.multipleSelection[0].name)
+
+			},
+            selectData2(){
+                console.log(tbDemo2.multipleSelection[0].name)
+			}
+        },
+
+        data() {
+            return {
+                multipleSelection:[],
+                tableData: [{
+                    date: '2016-05-03',
+                    name: '1',
+                    province: '上海',
+                    city: '普陀区',
+                    address: '上海市普陀区金沙江路 1518 弄',
+                    zip: 200333
+                }, {
+                    date: '2016-05-02',
+                    name: '2',
+                    province: '上海',
+                    city: '普陀区',
+                    address: '上海市普陀区金沙江路 1518 弄',
+                    zip: 200333
+                }, {
+                    date: '2016-05-04',
+                    name: '1',
+                    province: '上海',
+                    city: '普陀区',
+                    address: '上海市普陀区金沙江路 1518 弄',
+                    zip: 200333
+                }, {
+                    date: '2016-05-01',
+                    name: '1',
+                    province: '上海',
+                    city: '普陀区',
+                    address: '上海市普陀区金沙江路 1518 弄',
+                    zip: 200333
+                }, {
+                    date: '2016-05-02',
+                    name: '2',
+                    province: '上海',
+                    city: '普陀区',
+                    address: '上海市普陀区金沙江路 1518 弄',
+                    zip: 200333
+                }, {
+                    date: '2016-05-04',
+                    name: '1',
+                    province: '上海',
+                    city: '普陀区',
+                    address: '上海市普陀区金沙江路 1518 弄',
+                    zip: 200333
+                }, {
+                    date: '2016-05-01',
+                    name: '1',
+                    province: '上海',
+                    city: '普陀区',
+                    address: '上海市普陀区金沙江路 1518 弄',
+                    zip: 200333
+                }, {
+                    date: '2016-05-02',
+                    name: '2',
+                    province: '上海',
+                    city: '普陀区',
+                    address: '上海市普陀区金沙江路 1518 弄',
+                    zip: 200333
+                }, {
+                    date: '2016-05-04',
+                    name: '1',
+                    province: '上海',
+                    city: '普陀区',
+                    address: '上海市普陀区金沙江路 1518 弄',
+                    zip: 200333
+                }, {
+                    date: '2016-05-01',
+                    name: '1',
+                    province: '上海',
+                    city: '普陀区',
+                    address: '上海市普陀区金沙江路 1518 弄',
+                    zip: 200333
+                }]
+            }
+        }
+    });
+
+    var tbDemo2 = new Vue({
+        el: "#tbDemo2",
+        methods: {
+            changeFun(val) {
+                this.multipleSelection = val;
+            },
+            handleClick(row) {
+                console.log(row);
+            },
+            selectData2(){
+                console.log(this.multipleSelection[0].name)
+
+            }
+        },
+
+        data() {
+            return {
+                multipleSelection:[],
+                tableData2: [{
+                    date: '2016-05-03',
+                    name: '1',
+                    province: '上海',
+                    city: '普陀区',
+                    address: '上海市普陀区金沙江路 1518 弄',
+                    zip: 200333
+                }, {
+                    date: '2016-05-02',
+                    name: '2',
+                    province: '上海',
+                    city: '普陀区',
+                    address: '上海市普陀区金沙江路 1518 弄',
+                    zip: 200333
+                }, {
+                    date: '2016-05-02',
+                    name: '2',
+                    province: '上海',
+                    city: '普陀区',
+                    address: '上海市普陀区金沙江路 1518 弄',
+                    zip: 200333
+                }, {
+                    date: '2016-05-04',
+                    name: '1',
+                    province: '上海',
+                    city: '普陀区',
+                    address: '上海市普陀区金沙江路 1518 弄',
+                    zip: 200333
+                }, {
+                    date: '2016-05-01',
+                    name: '1',
+                    province: '上海',
+                    city: '普陀区',
+                    address: '上海市普陀区金沙江路 1518 弄',
+                    zip: 200333
+                }, {
+                    date: '2016-05-02',
+                    name: '2',
+                    province: '上海',
+                    city: '普陀区',
+                    address: '上海市普陀区金沙江路 1518 弄',
+                    zip: 200333
+                }, {
+                    date: '2016-05-04',
+                    name: '1',
+                    province: '上海',
+                    city: '普陀区',
+                    address: '上海市普陀区金沙江路 1518 弄',
+                    zip: 200333
+                }, {
+                    date: '2016-05-01',
+                    name: '1',
+                    province: '上海',
+                    city: '普陀区',
+                    address: '上海市普陀区金沙江路 1518 弄',
+                    zip: 200333
+                }, {
+                    date: '2016-05-02',
+                    name: '2',
+                    province: '上海',
+                    city: '普陀区',
+                    address: '上海市普陀区金沙江路 1518 弄',
+                    zip: 200333
+                }, {
+                    date: '2016-05-04',
+                    name: '1',
+                    province: '上海',
+                    city: '普陀区',
+                    address: '上海市普陀区金沙江路 1518 弄',
+                    zip: 200333
+                }, {
+                    date: '2016-05-01',
+                    name: '1',
+                    province: '上海',
+                    city: '普陀区',
+                    address: '上海市普陀区金沙江路 1518 弄',
+                    zip: 200333
+                }]
+            }
+        }
+    });
+
+
+
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
