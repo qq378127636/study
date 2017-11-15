@@ -1,0 +1,728 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+	"http://www.ibatis.com/dtd/sql-map-2.dtd">
+<sqlMap namespace="SAMPLERECORD">
+	<!-- 定义各个类的别名 -->
+	<typeAlias alias="UwsMitDataRecord" type="com.paic.elis.uws.sample.dto.UwsMitDataRecord"></typeAlias>
+	
+	<typeAlias alias="SampleData" type="com.paic.elis.uws.sample.dto.SampleData"></typeAlias>
+	
+	<typeAlias alias="StaffInfo" type="com.paic.elis.uws.sample.dto.StaffInfo"></typeAlias>
+	
+	<typeAlias alias="SampleRuleTable" type="com.paic.elis.uws.sample.dto.SampleRuleTable"></typeAlias>
+	
+	<typeAlias alias="AppRulecheckUnpassReason" type="com.paic.elis.uws.sample.dto.AppRulecheckUnpassReason"></typeAlias>
+	
+	<typeAlias alias="Plan" type="com.paic.elis.uws.sample.dto.Plan"></typeAlias>
+	
+	<typeAlias alias="ClientInfo" type="com.paic.elis.uws.sample.dto.ClientInfo"></typeAlias>
+	
+	<typeAlias alias="SampleRecordTable" type="com.paic.elis.uws.sample.dto.SampleRecordTable"></typeAlias>
+	
+	<typeAlias alias="AlmightyRules" type="com.paic.elis.uws.sample.dto.AlmightyRules"></typeAlias>
+	
+	<typeAlias alias="SamplepermissionSet" type="com.paic.elis.uws.sample.dto.SamplepermissionSet"></typeAlias>
+	
+	<typeAlias alias="SampleRuleDetaAilTable" type="com.paic.elis.uws.sample.dto.SampleRuleDetaAilTable"></typeAlias>
+	
+	<typeAlias alias="SampleTermTable" type="com.paic.elis.uws.sample.dto.SampleTermTable"></typeAlias>
+	
+	<typeAlias alias="CurSampleTerm" type="com.paic.elis.uws.sample.dto.CurSampleTerm"></typeAlias>
+	
+	<typeAlias alias="ProfCodeTbl" type="com.paic.elis.uws.sample.dto.ProfCodeTbl"></typeAlias>
+	
+	<typeAlias alias="AutoSampleRecord" type="com.paic.elis.uws.sample.dto.AutoSampleRecord"></typeAlias>
+	
+	<typeAlias alias="AutoSampleConfig" type="com.paic.elis.uws.sample.dto.AutoSampleConfig"></typeAlias>
+	
+	<typeAlias alias="AutoSampleCount" type="com.paic.elis.uws.sample.dto.AutoSampleCount"></typeAlias>
+	
+	<typeAlias alias="AppDataConvertError" type="com.paic.elis.uws.sample.dto.AppDataConvertError"></typeAlias>
+	
+	<resultMap class="AppDataConvertError" id="get-AppDataConvertError-result">
+		<result property="barCodeNo" column="BAR_CODE_NO" />
+		<result property="errorType" column="ERROR_TYPE" />
+		<result property="errorDesc" column="ERROR_DESC" />
+		<result property="convertDate" column="CONVERT_DATE" />
+		<result property="errorCode" column="ERROR_CODE" />
+		<result property="fieldName" column="FIELD_NAME" />
+	</resultMap>
+	
+	<resultMap class="AutoSampleCount" id="get-AutoSampleCount-result">
+		<result property="regionCode" column="REGION_CODE" />
+		<result property="yearMonth" column="YEAR_MONTH" />
+		<result property="sampleDay" column="SAMPLE_DAY" />
+		<result property="sampleCount" column="SAMPLE_COUNT" />
+		<result property="renewCount" column="RENEW_COUNT" />
+		<result property="total" column="TOTAL" />
+		<result property="memo" column="MEMO" />
+		<result property="createdBy" column="CREATED_BY" />
+		<result property="createdDate" column="CREATED_DATE" />
+		<result property="updatedBy" column="UPDATED_BY" />
+		<result property="updatedDate" column="UPDATED_DATE" />
+	</resultMap>
+	
+	<resultMap class="AutoSampleConfig" id="get-AutoSampleConfig-result">
+		<result property="ruleNo" column="RULE_NO" />
+		<result property="regionCode" column="REGION_CODE" />
+		<result property="daySet" column="DAY_SET" />
+		<result property="enable" column="ENABLE" />
+		<result property="renewSet" column="RENEW_SET" />
+		<result property="scaleNumerator" column="SCALE_NUMERATOR" />
+		<result property="scaleDeNoMinator" column="SCALE_DENOMINATOR" />
+		<result property="dayMin" column="DAY_MIN" />
+		<result property="dayMax" column="DAY_MAX" />
+		<result property="monthMin" column="MONTH_MIN" />
+		<result property="monthMax" column="MONTH_MAX" />
+		<result property="memo" column="MEMO" />
+		<result property="createdBy" column="CREATED_BY" />
+		<result property="createdDate" column="CREATED_DATE" />
+		<result property="updatedBy" column="UPDATED_BY" />
+		<result property="updatedDate" column="UPDATED_DATE" />
+	</resultMap>
+	
+	<resultMap class="AutoSampleRecord" id="get-AutoSampleRecord-result">
+		<result property="appNo" column="APPNO" />
+		<result property="ruleNo" column="RULE_NO" />
+		<result property="sampleFlag" column="SAMPLE_FLAG" />
+		<result property="memo" column="MEMO" />
+		<result property="createdBy" column="CREATED_BY" />
+		<result property="createdDate" column="CREATED_DATE" />
+		<result property="updatedBy" column="UPDATED_BY" />
+		<result property="updatedDate" column="UPDATED_DATE" />
+	</resultMap>
+	
+	<resultMap class="ProfCodeTbl" id="get-ProfCodeTbl-result">
+		<result property="profCode" column="PROF_CODE" />
+		<result property="profGrade" column="PROF_GRADE" />
+		<result property="description" column="DESCRIPTION" />
+		<result property="gSyn" column="G_SYN" />
+		<result property="gHos" column="G_HOS" />
+		<result property="gAll" column="G_ALL" />
+		<result property="pkSerial" column="PK_SERIAL#" />
+	</resultMap>
+
+	<resultMap class="CurSampleTerm" id="get-CurSampleTerm-result">
+		<result property="sampleTerm" column="SAMPLE_TERM" />
+		<result property="dealType" column="DEAL_TYPE" />
+	</resultMap>
+
+	<resultMap class="SampleTermTable" id="get-SampleTermTable-result">
+		<result property="termClass" column="TERM_CLASS" />
+		<!--
+		<result property="sampleTerm" column="SAMPLE_TERM" />
+		<result property="description" column="DESCRIPTION" />
+		<result property="dealType" column="DEAL_TYPE" />
+		<result property="termClass" column="TERM_CLASS" />
+		<result property="createdBy" column="CREATED_BY" />
+		<result property="createdDate" column="CREATED_DATE" />
+		<result property="updatedBy" column="UPDATED_BY" />
+		<result property="updatedDate" column="UPDATED_DATE" />
+		-->
+	</resultMap>
+	
+	<resultMap class="SampleRuleDetaAilTable" id="get-SampleRuleDetaAilTable-result">
+		<result property="sampleSequence" column="SAMPLE_SEQUENCE" />
+		<result property="sampleTerm" column="SAMPLE_TERM" />
+		<result property="sampleSeqNo" column="SAMPLE_SEQNO" />
+		<result property="sampleTermValue" column="SAMPLE_TERM_VALUE" />
+		<result property="maxSampleTermValue" column="MAX_SAMPLE_TERM_VALUE" />
+		<result property="minSampleTermValue" column="MIN_SAMPLE_TERM_VALUE" />
+		<result property="createdBy" column="CREATED_BY" />
+		<result property="createdDate" column="CREATED_DATE" />
+		<result property="updatedBy" column="UPDATED_BY" />
+		<result property="updatedDate" column="UPDATED_DATE" />
+		<result property="pkSerial" column="PK_SERIAL#" />
+	</resultMap>
+	
+	<resultMap class="UwsMitDataRecord" id="get-UwsMitDataRecord-result">
+		<result property="barCodeNo" column="BAR_CODE_NO" />
+		<result property="voucherBarCodeNo" column="VOUCHER_BAR_CODE_NO" />
+		<result property="status" column="STATUS" />
+	</resultMap>
+	
+	<resultMap class="SampleData" id="get-sampleData-result">
+		<result property="ctrlId" column="CTRL_ID" />
+		<result property="barCodeNo" column="BAR_CODE_NO" />
+		<result property="pkSerial" column="PK_SERIAL#" />
+	</resultMap>
+	
+	<resultMap class="StaffInfo" id="get-StaffInfo-result">
+		<result property="empType" column="EMP_TYPE" />
+		<result property="regionCode" column="REGION_CODE" />
+		<result property="deptno" column="DEPTNO" />
+	</resultMap>
+	
+	<resultMap class="SampleRuleTable" id="get-SampleRuleTable-result">
+		<result property="sampleSequence" column="SAMPLE_SEQUENCE" />
+		<result property="startDate" column="START_DATE" />
+		<result property="endDate" column="END_DATE" />
+		<result property="sampleType" column="SAMPLE_TYPE" />
+		<result property="sampleRatio" column="SAMPLE_RATIO" />
+		<result property="sampleFlag" column="SAMPLE_FLAG" />
+		<result property="sampleDescription" column="SAMPLE_DESCRIPTION" />
+		<result property="terminateDescription" column="TERMINATE_DESCRIPTION" />
+		<result property="confirmUser" column="CONFIRM_USER" />
+		<result property="setuserLevel" column="SETUSER_LEVEL" />
+		<result property="ceratedBy" column="CREATED_BY" />
+		<result property="ceratedDate" column="CREATED_DATE" />
+		<result property="upDatedBy" column="UPDATED_BY" />
+		<result property="updateDate" column="UPDATED_DATE" />
+		<result property="honoraryAgentType" column="HONORARY_AGENT_TYPE" />
+		<result property="issampleAgentOne" column="IS_SAMPLE_AGENT_ONE" />
+		<result property="issampleAgentTwo" column="IS_SAMPLE_AGENT_TWO" />
+		<result property="issampleAgentThree" column="IS_SAMPLE_AGENT_THREE" />
+		<result property="issampleAgentFour" column="IS_SAMPLE_AGENT_FOUR" />
+		<result property="pkSerial" column="PK_SERIAL#" />
+		<result property="clientType" column="CLIENT_TYPE" />
+		<result property="sampleRatioOne" column="SAMPLE_RADIO_ONE" />
+		<result property="sampleRatioTwo" column="SAMPLE_RADIO_TWO" />
+		<result property="sampleRatioThree" column="SAMPLE_RADIO_THREE" />
+		<result property="sampleRatioFour" column="SAMPLE_RADIO_FOUR" />
+	</resultMap>
+	
+	<resultMap class="AppRulecheckUnpassReason" id="get-AppRulecheckUnpassReason-result">
+		<result property="ctrlId" column="CTRL_ID" />
+		<result property="appNo" column="APPNO" />
+		<result property="polNo" column="POLNO" />
+		<result property="ctrlNo" column="CTRLNO" />
+		<result property="procType" column="PROC_TYPE" />
+		<result property="clientNo" column="CLIENTNO" />
+		<result property="clientType" column="CLIENT_TYPE" />
+		<result property="planCode" column="PLAN_CODE" />
+		<result property="unpassCause" column="UNPASS_CAUSE" />
+		<result property="ruleFlag" column="RULE_FLAG" />
+		<result property="isChiefUndwrt" column="IS_CHIEF_UNDWRT" />
+		<result property="reasonDescription" column="REASON_DESCRIPTION" />
+		<result property="lcu" column="LCU" />
+		<result property="lcd" column="LCD" />
+		<result property="retFlag" column="RET_FLAG" />
+		<result property="brNo" column="BRNO" />
+		<result property="idUnPassReason" column="ID_UNPASS_REASON"/>
+	</resultMap>
+	
+	<resultMap class="Plan" id="get-Plan-result">
+		<result property="planCode" column="PLAN_CODE" />
+		<result property="unitSum" column="UNIT_SUM" />
+	</resultMap>
+	
+	<resultMap class="ClientInfo" id="get-ClientInfo-result">
+		<result property="clientNo" column="CLIENTNO" />
+		<result property="sex" column="SEX" />
+		<result property="birthDate" column="BIRTH_DATE" />
+		<result property="profCode" column="PROF_CODE" />
+		<result property="age" column="age" />
+	</resultMap>
+	
+	<resultMap class="SampleRecordTable" id="get-SampleRecordTable-result">
+		<result property="appNo" column="APPNO" />
+		<result property="polNo" column="POLNO" />
+		<result property="controlNo" column="CONTROLNO" />
+		<result property="clientNo" column="CLIENTNO" />
+		<result property="sampleSequence" column="SAMPLE_SEQUENCE" />
+		<result property="peocType" column="PROC_TYPE" />
+		<result property="pkSerial" column="PK_SERIAL#" />
+	</resultMap>
+	
+	<resultMap class="AlmightyRules" id="get-AlmightyRules-result">
+		<result property="ruleId" column="RULE_ID" />
+		<result property="regionCode" column="REGION_CODE" />
+		<result property="startDate" column="START_DATE" />
+		<result property="endDate" column="END_DATE" />
+		<result property="ruleValue" column="RULE_VALUE" />
+		<result property="memo" column="MEMO" />
+		<result property="createdBy" column="CREATED_BY" />
+		<result property="createdDate" column="CREATED_DATE" />
+		<result property="updatedBy" column="UPDATED_BY" />
+		<result property="updateDate" column="UPDATED_DATE" />
+		<result property="idUwsAlmightyRules" column="ID_UWS_ALMIGHTY_RULES" />
+	</resultMap>
+	
+	<resultMap class="SamplepermissionSet" id="get-SamplepermissionSet-result">
+		<result property="regionCode" column="REGION_CODE" />
+		<result property="parentSetPhysical" column="PARENT_SET_PHYSICAL" />
+		<result property="parentSetNb" column="PARENT_SET_NB" />
+		<result property="branchSetPhysical" column="BRANCH_SET_PHYSICAL" />
+		<result property="branchSrtNb" column="BRANCH_SET_NB" />
+		<result property="parentSetPhysicalRatio" column="PARENT_SET_PHYSICAL_RATIO" />
+		<result property="parentSetNbRatio" column="PARENT_SET_NB_RATIO" />
+		<result property="branchSetPhysicalRatio" column="BRANCH_SET_PHYSICAL_RATIO" />
+		<result property="branchSetNbRatio" column="BRANCH_SET_NB_RATIO" />
+		<result property="createdBy" column="CREATED_BY" />
+		<result property="createdDate" column="CREATED_DATE" />
+		<result property="updatedBy" column="UPDATED_BY" />
+		<result property="updatedDate" column="UPDATED_DATE" />
+		<result property="idUwsSamplePermission" column="ID_UWS_SAMPLE_PERMISSION_SET" />
+		<result property="parentPhysicalSDate" column="PARENT_PHYSICAL_S_DATE" />
+		<result property="parentPhysicalEDate" column="PARENT_PHYSICAL_E_DATE" />
+		<result property="parentNbSDate" column="PARENT_NB_S_DATE" />
+		<result property="parentNbEDate" column="PARENT_NB_E_DATE" />
+		<result property="branchPjysicalSDate" column="BRANCH_PHYSICAL_S_DATE" />
+		<result property="branchPjysicalEDate" column="BRANCH_PHYSICAL_E_DATE" />
+		<result property="branchNbSDate" column="BRANCH_NB_S_DATE" />
+		<result property="branchNbEDate" column="BRANCH_NB_E_DATE" />
+	</resultMap>
+	
+	<resultMap class="AppRulecheckUnpassReason" id="get-ARulecheckUnpassReason-result">
+		<result property="ctrlId" column="CTRL_ID" />
+		<result property="appNo" column="APPNO" />
+		<result property="polNo" column="POLNO" />
+		<result property="ctrlNo" column="CTRLNO" />
+		<result property="procType" column="PROC_TYPE" />
+		<result property="clientNo" column="CLIENTNO" />
+		<result property="clientType" column="CLIENT_TYPE" />
+		<result property="planCode" column="PLAN_CODE" />
+		<result property="unpassCause" column="UNPASS_CAUSE" />
+		<result property="ruleFlag" column="RULE_FLAG" />
+		<result property="isChiefUndwrt" column="IS_CHIEF_UNDWRT" />
+		<result property="reasonDescription" column="REASON_DESCRIPTION" />
+	</resultMap>
+	
+	<select id="queryDataConvertError" resultMap="get-AppDataConvertError-result" parameterClass="String">
+		select 'x' from app_data_convert_error a, uws_rulecheck_app_form b
+     	where a.bar_code_no = b.bar_code_no
+        and b.ctrl_id = #ctrlId#
+	</select>
+	
+	<select id="queryASCount" resultMap="get-AutoSampleCount-result" parameterClass="HashMap">
+		select * from uws_auto_sample_count
+      	where year_month = #yearMonth#
+        and sample_day = #sampleDay#
+	</select>
+	
+	<select id="queryAutoSampleCount" resultMap="get-AutoSampleCount-result" parameterClass="HashMap">
+		select nvl(sample_count, 0), nvl(renew_count, 0)
+      	from uws_auto_sample_count
+    	 where year_month = to_number(to_char(sysdate, 'yyyymm'))
+      	 and sample_day = #renewDay#
+     	  and region_code = #regionCode#
+	</select>
+	
+	<select id="queryCountByDay" resultMap="get-AutoSampleCount-result" parameterClass="HashMap">
+		select nvl(sample_count, 0) + nvl(renew_count, 0)
+      	from uws_auto_sample_count
+     	where year_month = to_number(to_char(sysdate, 'yyyymm'))
+      	 and sample_day = #regionCode#
+      	 and region_code = #regionCode#
+	</select>
+	
+	<select id="queryCountByMonth" resultMap="get-AutoSampleCount-result" parameterClass="String">
+		select nvl(sum(sample_count), 0) + nvl(sum(renew_count), 0)
+          from uws_auto_sample_count
+     	  where year_month = to_number(to_char(sysdate, 'yyyymm'))
+          and region_code = #regionCode#
+	</select>
+	
+	<select id="queryAutoSampleCofig" resultMap="get-AutoSampleConfig-result" parameterClass="HashMap">
+	<![CDATA[
+			select * from uws_auto_sample_config
+		  where region_code = #regionCode#
+		   and day_set like #Day#
+		   and enable = #enable#
+		   and rownum <= 1
+	]]>
+	</select>
+	
+	<!-- 查询数据 -->
+	<select id="queryHasHonoraryUnpass" resultClass="String" parameterClass="String">
+		select 'x' from uws_apprulecheck_unpass_reason
+     where ctrL_id = #ctrlId#
+	</select>
+	
+	<!-- 查询数据 -->
+	<select id="queryUnpassReason" resultMap="get-AppRulecheckUnpassReason-result" parameterClass="String">
+		select * from uws_apprulecheck_unpass_reason
+        where ctrl_id = #ctrlId#
+        and rule_flag = '02'
+	</select>
+	
+	<!-- 查询数据 -->
+	<select id="queryAutoSampleRecord" resultMap="get-AutoSampleRecord-result" parameterClass="String">
+		select * from uws_auto_sample_record
+        where appno = #appNo#
+	</select>
+	
+	<!-- 查询数据 -->
+	<select id="queryCurProfGrade" resultMap="get-ProfCodeTbl-result" parameterClass="String">
+		select prof_grade
+   			from prof_code_tbl
+  			where prof_code= #profCode#
+	</select>
+	
+	<!-- 查询数据 -->
+	<select id="queryCurPlanSumins" resultClass="String" parameterClass="HashMap">
+	<![CDATA[
+		select 'X'
+			 from UWS_SAMPLE_RULE_DETAIL_TABLE a
+			 where a.sample_sequence = #sampleSequence#
+			   and a.sample_term = #sampleTerm#
+			  and nvl(a.sample_term_value,#planCode#)= #planCode#
+			   and nvl(to_number(a.min_sample_term_value),#data#) <= #data#
+			  and nvl(to_number(a.max_sample_term_value),#data#) >= #data#
+	]]>
+	</select>
+	
+	<!-- 查询数据 -->
+	<select id="queryCurClientSex" resultClass="String" parameterClass="HashMap">
+		select 'X'
+			 from  UWS_SAMPLE_RULE_DETAIL_TABLE a
+ 			 where a.sample_sequence = #sampleSequence#
+ 		     and a.sample_term = #sampleTerm#
+  			 and (nvl(a.sample_term_value,#data#) = #data# or a.sample_term_value='9');
+	</select>
+	
+	<!-- 查询数据 -->
+	<select id="queryCurOtherNumber" resultClass="String" parameterClass="HashMap">
+	<![CDATA[
+		 select 'X'
+			 from  UWS_SAMPLE_RULE_DETAIL_TABLE a
+			 where a.sample_sequence = #sampleSequence#
+			   and a.sample_term = #sampleTerm#
+				and nvl(to_number(a.min_sample_term_value),#data#) <= #data#
+			   and nvl(to_number(a.max_sample_term_value),#data#) >= #data#
+	]]>
+	</select>
+	
+	<!-- 查询数据 -->
+	<select id="queryCurOther" resultClass="String" parameterClass="HashMap">
+		 select 'X'
+			 from  UWS_SAMPLE_RULE_DETAIL_TABLE a
+			 where a.sample_sequence = #sampleSequence#
+  			 and a.sample_term = #sampleTerm#
+  			 and nvl(a.sample_term_value,#data#) = #data#
+	</select>
+	
+	<!-- 查询数据 -->
+	<select id="queryCurDeptno" resultClass="String" parameterClass="HashMap">
+		select 'X'
+  			from UWS_SAMPLE_RULE_DETAIL_TABLE a,child_depts_synch b
+ 			where b.parent_deptno = nvl(a.sample_term_value,b.parent_deptno)
+   			and a.sample_sequence = #sampleSequence#
+   			and a.sample_term = #sampleTerm#
+  		    and b.child_deptno = #deptNo#
+	</select>
+	
+	<!-- 查询数据 -->
+	<select id="queryCurRegionCode" resultClass="String" parameterClass="HashMap">
+		select 'X'
+  			from UWS_SAMPLE_RULE_DETAIL_TABLE a,child_region_code_synch b
+ 			 where  b.parent_region_code  = nvl(a.sample_term_value,b.parent_region_code)
+    		 and a.sample_sequence = #sampleSequence#
+    		 and a.sample_term = #sampleTerm#
+   			 and b.child_region_code = #regionCode#
+	</select>
+	
+	<!-- 查询数据 -->
+	<select id="queryCurTermClass" resultMap="get-SampleTermTable-result" parameterClass="String">
+		select distinct b.term_class
+  			from UWS_SAMPLE_RULE_DETAIL_TABLE a, UWS_SAMPLE_TERM_TABLE b
+ 		    where a.sample_term = b.sample_term
+    		and a.sample_sequence = #sampleSequence#
+    		order by b.term_class asc
+	</select>
+	
+	<!-- 查询数据 -->
+	<select id="queryCurSampleTerm" resultMap="get-CurSampleTerm-result" parameterClass="HashMap">
+		select distinct a.sample_term,b.deal_type
+ 			from  UWS_SAMPLE_RULE_DETAIL_TABLE a,UWS_SAMPLE_TERM_TABLE b
+  			where a.sample_term = b.sample_term
+   			 and a.sample_sequence = #sampleSequece#
+    			and b.term_class = #termClass#
+	</select>
+	<!-- 查询数据 -->
+	<select id="querySamplePermissionSet" resultMap="get-SamplepermissionSet-result" parameterClass="String">
+		select a.*
+      	from uws_sample_permission_set a
+    	 where a.region_code = #regionCode#
+	</select>
+	
+	<!-- 查询数据 -->
+	<select id="queryBarCodeNo" resultClass="String" parameterClass="String">
+		select BAR_CODE_NO from uws_mit_data_record where voucher_bar_code_no = #barCodeNo# 
+	</select>
+	
+	<!-- 查询数据 -->
+	<select id="queryUploadCtrlIdByBcn" resultClass="String" parameterClass="String">
+		select CTRL_ID from uws_rulecheck_app_form where BAR_CODE_NO=#barCodeNo# and source = 'G' and rownum=1
+	</select>
+	
+	<select id="queryStaffInfo" resultMap="get-StaffInfo-result" parameterClass="String">
+		select a.EMP_TYPE,a.region_code, a.deptno from staff_info a where a.EMPNO=#empNo#
+	</select>
+	
+	<select id="queryCurSample2" resultMap="get-SampleRuleTable-result" parameterClass="java.util.HashMap">
+	<![CDATA[
+		select a.*   
+			from UWS_SAMPLE_RULE_TABLE a
+		   where #appDate# >= start_date
+			 and (#appDate# < end_date or end_date is null)
+			 and SAMPLE_FLAG = 'Y'
+			 and not exists
+		   (select 'x'
+					from uws_sample_rule_detail_table b
+				   	where b.sample_term in ('DEPTNO_IN', 'REGION_CODE_IN', 'AGENTNO_IN')
+				     and b.sample_sequence = a.sample_sequence)
+	]]>
+	</select>
+	
+	<select id="querySampleRuleByAgentClass" resultClass="String" parameterClass="java.util.HashMap">
+	<![CDATA[
+		select 'x'
+				from UWS_SAMPLE_RULE_TABLE a
+			where #appDate# >= start_date
+			 and (#appDate# < end_date or end_date is null)
+			 and SAMPLE_FLAG = 'Y'
+	]]>
+		<dynamic>
+			<isNotEmpty property="sampleAgentOne" prepend=" and ">
+                a.is_sample_agent_one = #sampleAgentOne#
+			</isNotEmpty>
+			<isNotEmpty property="sampleAgentTwo" prepend=" and ">
+                a.is_sample_agent_two = #sampleAgentTwo#
+			</isNotEmpty>
+			<isNotEmpty property="sampleAgentThree" prepend=" and ">
+                a.is_sample_agent_three = #sampleAgentThree#
+			</isNotEmpty>
+			<isNotEmpty property="sampleAgentFour" prepend=" and ">
+                a.is_sample_agent_four = #sampleAgentFour#
+			</isNotEmpty>
+		</dynamic>
+	</select>
+	
+	<!-- 查询数据 -->
+	<select id="queryCurSample" resultMap="get-SampleRuleTable-result" parameterClass="java.util.HashMap">
+	<![CDATA[
+			select a.*
+			from UWS_SAMPLE_RULE_TABLE a, uws_sample_rule_detail_table b
+		   where #appDate# >= start_date
+			 and (#appDate# < end_date or end_date is null)
+			 and SAMPLE_FLAG = 'Y'
+			 and a.sample_sequence = b.sample_sequence
+			 and b.sample_term = 'AGENTNO_IN'
+			 and b.sample_term_value = #agentNo#
+		  union
+		  select a.*
+			from UWS_SAMPLE_RULE_TABLE        a,
+				 uws_sample_rule_detail_table b,
+				 child_depts_synch            c
+		   where #appDate# >= start_date
+			 and (#appDate# < end_date or end_date is null)
+			 and SAMPLE_FLAG = 'Y'
+			 and a.sample_sequence = b.sample_sequence
+			 and b.sample_term = 'DEPTNO_IN'
+			 and b.sample_term_value = c.parent_deptno
+			 and c.child_deptno = #deptno#
+		  union
+		  select a.*
+			from UWS_SAMPLE_RULE_TABLE        a,
+				 uws_sample_rule_detail_table b,
+				 child_region_code_synch      c
+		   where #appDate# >= start_date
+			 and (#appDate# < end_date or end_date is null)
+			 and SAMPLE_FLAG = 'Y'
+			 and a.sample_sequence = b.sample_sequence
+			 and b.sample_term = 'REGION_CODE_IN'
+			 and b.sample_term_value = c.parent_region_code
+			 and c.child_region_code = #regionCode#
+	]]>
+	</select>
+
+	<!-- 查询数据 -->
+	<select id="querySpotcheckResult" resultMap="get-ARulecheckUnpassReason-result" parameterClass="java.util.HashMap">
+		select  ctrl_id ,appno ,polno ,ctrlno  ,proc_type ,clientno,client_type  
+							,plan_code ,unpass_cause ,rule_flag ,is_chief_undwrt,reason_description
+							from  uws_apprulecheck_unpass_reason where  ctrl_id = #ctrlId#
+							and  unpass_cause = #unpassCause# and CLIENT_TYPE = #clientType#
+	</select>
+	<!-- 查询数据 -->
+	<select id="queryExistsUnpassRec" resultMap="get-ARulecheckUnpassReason-result" parameterClass="java.util.HashMap">
+		select  ctrl_id ,appno ,polno ,ctrlno  ,proc_type ,clientno,client_type 
+							,plan_code ,unpass_cause ,rule_flag , is_chief_undwrt ,reason_description
+					from  uws_apprulecheck_unpass_reason where  ctrl_id=#ctrlId# and clientno=#clientNo# and client_type=#clientType#
+							and unpass_cause=#unpassCause# and reason_description=#reasonDescription#
+	</select>
+	
+	<select id="queryAppBenAll" resultMap="get-Plan-result" parameterClass="String">
+		select a.plan_code, a.sum_ins, a.units, b.unit_sum
+		from uws_rulecheck_app_ben a, plan b 
+		 where a.plan_code = b.plan_code
+			and a.ctrl_id=#ctrlId#
+	</select>
+	
+	<!-- 查询数据 -->
+	<select id="queryApplicant" resultMap="get-ClientInfo-result" parameterClass="String">
+		select a.applicant,
+          a.app_date,
+          b.sex,
+          b.birth_date,
+          b.prof_code,
+          Pub_Package.get_age(null, null, null, app_date, birth_date, 'N') AS age
+     from uws_rulecheck_app_form a, client_info b
+     where a.ctrl_id = #ctrlId#
+     and a.applicant = b.clientno
+	</select>
+	
+	<!-- 查询数据 -->
+	<select id="queryExistsSampleRec" resultMap="get-SampleRecordTable-result" parameterClass="java.util.HashMap">
+		select APPNO, POLNO, CONTROLNO, CLIENTNO,SAMPLE_SEQUENCE,PROC_TYPE 
+			from uws_sample_record_table where controlno=#CONTROLNO# and clientno=#CLIENTNO# and sample_sequence=#SAMPLE_SEQUENCE#
+	</select>
+	
+	<!-- 查询数据 -->
+	<select id="queryExistsSampleRecByAppNo" resultMap="get-SampleRecordTable-result" parameterClass="java.util.HashMap">
+		select APPNO, POLNO, CONTROLNO, CLIENTNO,SAMPLE_SEQUENCE,PROC_TYPE 
+			from uws_sample_record_table where APPNO=#appNo# 
+			and clientno=#CLIENTNO# and sample_sequence=#SAMPLE_SEQUENCE#
+	</select>
+	
+	<!-- 查询数据 -->
+	<select id="queryAlmightyRules" resultMap="get-AlmightyRules-result" parameterClass="java.util.HashMap">
+	<![CDATA[
+		select a.*  from uws_almighty_rules a, region_code_tbl b, child_region_code_synch c
+						  where a.region_code = b.region_code
+						and b.region_code = c.parent_region_code
+
+						and c.child_region_code = #regionCode#
+						and a.rule_id = #ruleId#
+						and a.start_date <= #date#
+						and (#date# < a.end_date or a.end_date is null)
+						  order by b.region_grade desc
+	]]>
+	</select>
+	
+	<parameterMap id="query-agent-class-bank-map" class="HashMap">
+		<parameter property="agentClass" jdbcType="VARCHAR" javaType="java.lang.String" mode="OUT" />
+		<parameter property="empNo" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+		<parameter property="empType" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+		<parameter property="appDate" jdbcType="DATE" javaType="java.util.Date" mode="IN" />
+	</parameterMap>
+	<procedure id="queryAgentClassBank" parameterMap="query-agent-class-bank-map">
+        {call ? := uws_lcs_in_package.func_is_honorary_empno(?, ?, ? ) }
+	</procedure> 
+    
+	<parameterMap id="query-agent-class-agent-map" class="HashMap">
+		<parameter property="agentClass" jdbcType="VARCHAR" javaType="java.lang.String" mode="OUT" />
+		<parameter property="inputType" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN"/>
+		<parameter property="ctrlId" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+		<parameter property="appDate" jdbcType="DATE" javaType="java.util.Date" mode="IN" />
+	</parameterMap>
+	<procedure id="queryAgentClassAgent" parameterMap="query-agent-class-agent-map">
+        {call ? := Undw_Ap_Pub_Package_3.func_is_honorary_polno_up(?, ?, ? ) }
+	</procedure> 
+	
+	<parameterMap id="query-agent-class-region-map" class="HashMap">
+		<parameter property="secondRegionCode" jdbcType="VARCHAR" javaType="java.lang.String" mode="OUT" />
+		<parameter property="regionCode" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+		<parameter property="regionGrade" jdbcType="NUMBER" javaType="java.lang.Integer" mode="IN" />
+		<parameter property="errorCode" jdbcType="VARCHAR" javaType="java.lang.String" mode="OUT" />
+		<parameter property="errorMessage" jdbcType="VARCHAR" javaType="java.lang.String" mode="OUT"/>
+	</parameterMap>
+	<procedure id="quertParentRegionCode" parameterMap="query-agent-class-region-map">
+        {call ? := pub_query_package.func_get_parent_region_code(?, ?, ? ,?) }
+	</procedure> 
+	
+	<parameterMap id="query-queryRuleOptimize-map" class="HashMap">
+		<parameter property="controlId" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+		<parameter property="controlType" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+	</parameterMap>
+	<procedure id="queryRuleOptimize" parameterMap="query-queryRuleOptimize-map">
+        {call ? := ap_pub_package.get_control(? ,?) }
+	</procedure> 
+    
+    
+	<!--  更改投保单号，为了便于原因查找，无论是删除，还是更改，都只通过修改投保单号来实现！  -->
+	<update id="updateNewAppNOandMemo" parameterClass="HashMap">
+		UPDATE uws_auto_sample_record SET
+		<dynamic prepend=" ">
+			<isNotNull property="newAppNo" prepend=",">
+				appno = #newAppNo#
+			</isNotNull>
+			<isNotNull property="changeReason" prepend=",">
+				memo = #changeReason#
+			</isNotNull>
+		</dynamic>
+		WHERE appno = #appNo#
+	</update>
+	
+	<!--  修改当天抽取数And备注  -->
+	<update id="updateScountAndMemo" parameterClass="HashMap">
+		UPDATE uws_auto_sample_count SET
+		<dynamic prepend=" ">
+				renew_count = renew_count - 1
+			<isNotNull property="changeReason" prepend=",">
+				memo = #memo#
+			</isNotNull>
+		</dynamic>
+		where year_month = #yearMonth#
+        and sample_day = #sampleDay#
+	</update>
+	
+	<!--  修改当天补抽数And备注  -->
+	<update id="updateRcountAndMemo" parameterClass="HashMap">
+		UPDATE uws_auto_sample_count SET
+		<dynamic prepend=" ">
+				renew_count = renew_count - 1
+			<isNotNull property="changeReason" prepend=",">
+				memo = #memo#
+			</isNotNull>
+		</dynamic>
+		where year_month = #yearMonth#
+        and sample_day = #sampleDay#
+	</update>
+	
+	<!--  更新总数  -->
+	<update id="updateTotal" parameterClass="AutoSampleCount">
+		UPDATE uws_auto_sample_count SET
+		<dynamic prepend=" ">
+			total = to_number((select nvl(sum(sample_count), 0) + nvl(sum(renew_count), 0)
+                                                      from uws_auto_sample_count
+                                                      where year_month = #yearMonth#))
+		</dynamic>
+		where year_month = #yearMonth#
+	</update>
+	
+	<!--  当天补抽数  -->
+	<update id="updateRenewCount" parameterClass="AutoSampleCount">
+		UPDATE uws_auto_sample_count SET
+		<dynamic prepend=" ">
+			 renew_count = nvl(renew_count, 0) + 1
+		</dynamic>
+		where region_code = #regionCode#
+             and year_month = to_number(to_char(sysdate, 'yyyymm'))
+             and sample_day = #renewDay#
+	</update>
+	
+	<!--  当天抽取数  -->
+	<update id="updateSampleCount" parameterClass="AutoSampleCount">
+		UPDATE uws_auto_sample_count SET
+		<dynamic prepend=" ">
+			sample_count = nvl(sample_count, 0) + 1
+		</dynamic>
+		where region_code = #regionCode#
+           and year_month = to_number(to_char(sysdate, 'yyyymm'))
+           and sample_day = to_number(to_char(sysdate, 'dd'))
+	</update>
+	
+	<!--  当天抽取数  -->
+	<update id="updateASCTotal" parameterClass="AutoSampleCount">
+		UPDATE uws_auto_sample_count SET
+		<dynamic prepend=" ">
+			total = to_number((select nvl(sum(sample_count), 0) +
+                                    nvl(sum(renew_count), 0)
+                               from uws_auto_sample_count
+                              where year_month =
+                                    to_number(to_char(sysdate, 'yyyymm'))
+                                and region_code =
+                                    #regionCode#))
+		</dynamic>
+		where region_code = #regionCode#
+         and year_month = to_number(to_char(sysdate, 'yyyymm'))
+	</update>
+</sqlMap>
+
+
+
+
+
+
+
