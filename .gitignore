@@ -11,12 +11,16 @@
 
 # IDE FOR JAVA
 # /demo 开头表示忽略根目录下的demo文件夹，demo/ 不以/开头表示忽略所有demo目录
+classes/
+
 target/ 
 out/ 
 .idea/
 
 .mtj.tmp/
 .myeclipse/
+.settings/
+
 .mymetadata
 
 
