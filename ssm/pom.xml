@@ -54,7 +54,6 @@
 
 
 
-    <dependencyManagement>
         <dependencies>
 
             <!-- spring -->
@@ -319,7 +318,6 @@
                 <version>${shiro.version}</version>
             </dependency>
         </dependencies>
-    </dependencyManagement>
 
 
 
