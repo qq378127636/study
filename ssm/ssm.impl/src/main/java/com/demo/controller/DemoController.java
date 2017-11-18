@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import utils.SpringUtil;
 
 /**
  * Created by hxb on 2017/11/4
@@ -14,8 +15,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @RequestMapping("/demo")
 @Controller
 public class DemoController {
-
-
 
     @Autowired
     private IDemoService iDemoService;
@@ -41,10 +40,10 @@ public class DemoController {
         return "demo/demo";
     }
 
-    @RequestMapping("/findList")
+    @RequestMapping("/findUser")
     @ResponseBody
     public String findList( Demo demo) throws Exception {
-        return "aaaa";
+        return (String) SpringUtil.getSession().getAttribute("userName");
     }
 
 

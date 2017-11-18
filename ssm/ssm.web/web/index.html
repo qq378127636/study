@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-	<title>demo</title>
+	<title>主页</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<!--支持多设备-->
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -10,9 +10,10 @@
 	<link href="style/css/index.css" rel='stylesheet' type='text/css' />
 	<link rel="stylesheet" href="script/element-ui/css/eleIndex.css">
 </head>
-
-
 <body>
+
+
+
 <!--------------------------------------------- 导航 ------------------------------------->
 <div class='right-top-menu' style='background: #fff; height: 41px;'>
 	<ul style='float: right; list-style:none; padding-right: 24px;line-height: 41px;'>
@@ -20,6 +21,7 @@
 		<li style="float:left;padding-right:5px;"><a href="#">注销</a></li>
 	</ul>
 </div>
+
 
 
 <!--------------------------------------------- left ------------------------------------->
@@ -39,28 +41,31 @@
 	<div class="drop-navigation hide1">
 		<div class="top-menu">
 			<ul>
-				<li class="active"><a href="#">Home</a><!--active控制目标菜单颜色-->
-					<ul>
-						<li><a href="javascript:void(0)" content="/ssm/demo/grid">111</a></li>
-						<li><a href="javascript:void(0)" content="test.html">222</a></li>
-						<li><a href="#">Sunglasses</a></li>
-					</ul>
+
+
+
+
+				<li class="active"><a href="javascript:void(0)" content="ssm/">用户管理</a><!--active控制目标菜单颜色--></li>
+
+				<li><a href="javascript:void(0)">权限管理</a><!--active控制目标菜单颜色--></li>
+
+				<li><a href="javascript:void(0)" content="demo/findUser">demo</a>
+					<!--<ul>
+						<li><a href="javascript:void(0)">Sunglasses</a></li>
+					</ul>-->
 				</li>
-
-
-				<li><a href="#" content="/ssm/demo/grid">About</a></li>
-
-
-				<li><a href="#">Aboutss</a></li>
 			</ul>
 		</div>
 	</div>
 </div>
 
 
+
+
 <!--------------------------------------------- right ------------------------------------->
 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" style="background:#fff;">
 </div>
+
 
 
 <!--------------------------------------------- else ------------------------------------->
@@ -74,16 +79,13 @@
 <script src="script/jquery/jquery.min.js"></script>
 <script src="script/vue/vue.min.js"></script>
 <script src="script/element-ui/js/eleIndex.js"></script>
+
 <script>
-
-
-
-
     // $(".main").load("grid.html",function(){});
 
 
     //缩小时的菜单
-	  $( ".top-navigation" ).click(function() {
+	$( ".top-navigation" ).click(function() {
         var nav = $( ".drop-navigation" );
         if(nav.hasClass('hide1')){
             nav.removeClass("hide1").addClass("show");
@@ -112,6 +114,7 @@
 			 $(".main").load(links,function(){});
 		}
     });
+
 </script>
 </body>
 </html>

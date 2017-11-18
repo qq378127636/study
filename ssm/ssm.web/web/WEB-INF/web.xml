@@ -4,11 +4,10 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          version="3.1">
 
-    <welcome-file-list>
-        <welcome-file>index.html</welcome-file>
-    </welcome-file-list>
+
 
     <display-name>ssm</display-name>
+
 
 
     <!-- 加载spring容器 -->
@@ -21,17 +20,6 @@
     </listener>
 
 
-    <!--设置log4j的配置文件位置-->
-   <!-- <context-param>
-        <param-name>log4jConfigLocation</param-name>
-        <param-value>classpath:log/log4j.xml</param-value>
-    </context-param>
-    &lt;!&ndash;使用监听加载log4j的配置文件&ndash;&gt;
-    <listener>
-        <listener-class>org.springframework.web.util.Log4jConfigListener</listener-class>
-    </listener>-->
-
-
 
     <!-- springmvc前端控制器，rest配置 -->
     <servlet>
@@ -41,11 +29,13 @@
             <param-name>contextConfigLocation</param-name>
             <param-value>classpath:spring/springmvc.xml</param-value>
         </init-param>
+        <load-on-startup>1</load-on-startup>
     </servlet>
     <servlet-mapping>
         <servlet-name>springmvc_rest</servlet-name>
         <url-pattern>/</url-pattern>
     </servlet-mapping>
+
 
 
     <!-- post乱码过虑器 -->
