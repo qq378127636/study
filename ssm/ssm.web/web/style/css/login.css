@@ -72,6 +72,7 @@ form {
   position: relative;
   z-index: 2;
 }
+
 form input {
   -webkit-appearance: none;
      -moz-appearance: none;
@@ -227,4 +228,17 @@ form button:hover {
     -webkit-transform: translateY(-700px) rotate(600deg);
             transform: translateY(-700px) rotate(600deg);
   }
+}
+
+
+.error{
+  position: absolute;
+  top: 0;
+  margin-left: 100px;
+  line-height: 44px;
+  color: red;
+}
+
+.form div{
+  position: relative;
 }

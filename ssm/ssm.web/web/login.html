@@ -3,22 +3,37 @@
 <head>
   <meta charset="UTF-8">
   <title>S t r a t e g y</title>
-  
-  <link rel="stylesheet" href="style/css/login.css">
-</head>
 
+  <link rel="stylesheet" href="style/css/login.css" />
+</head>
 <body>
+
 <div class="wrapper">
 	<div class="container">
 		<h1>Welcome</h1>
 		
-		<form class="form" action="signIn" method="post">
-			<input type="text" placeholder="Username" name="userName">
-			<input type="password" placeholder="Password" name="passWord">
+		<form class="form" onsubmit="return validated()" method="post" action="signIn">
+
+			<div>
+				<input type="text" placeholder="Username" name="userName">
+			</div>
+
+			<div>
+				<input type="password" placeholder="Password" name="passWord">
+			</div>
+
 			<button type="submit" id="login-button">Sign In</button>
+
+
+			<div style="margin:20px 0">
+				<div style="width: 260px; margin: 0 auto; ">
+					<span style="text-align: left; font-size: 15px; font-weight: 500;">remember me</span>
+					<span style="text-align: right; font-size: 15px; margin-left: 20px; font-weight: 500;">Forgot password</span>
+				</div>
+			</div>
 		</form>
 	</div>
-	
+
 	<ul class="bg-bubbles">
 		<li></li>
 		<li></li>
@@ -42,6 +57,56 @@
 
 <script src="script/jquery/jquery.min.js"></script>
 <script >
+
+/**
+ * 表单校验
+ */
+function validated () {
+
+    var userName = $("input[name='userName']").val();
+    var passWord = $("input[name='passWord']").val();
+
+    if(userName && passWord)
+        return true;
+    else
+       return validatedSytle(userName, passWord);
+}
+
+
+
+/**
+ * 校验样式
+ * @param userName
+ * @param passWord
+ * @returns {boolean}
+ */
+function validatedSytle(userName, passWord) {
+
+    var errorStyle = "<span class='error'>X</span>";
+
+    if(!userName && !passWord)
+    {
+        $(".form div").eq(0).append(errorStyle );
+        $(".form div").eq(1).append(errorStyle );
+    }
+    else if(!userName)
+        $(".form div").eq(0).append(errorStyle );
+    else if(!passWord)
+        $(".form div").eq(1).append(errorStyle );
+
+    return false;
+}
+
+
+
+$(".form div").eq(0).keyup(function (){
+    $(this).find("span").remove();
+});
+
+$(".form div").eq(1).keyup(function (){
+    $(this).find("span").remove();
+});
+
 </script>
 
 </body>
