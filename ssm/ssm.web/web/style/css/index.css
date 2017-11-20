@@ -73,6 +73,8 @@ a:focus {
     }
 }
 
+
+
 .sidebar{
     background:#fff;
     top: 0;
@@ -187,7 +189,11 @@ span.menu {
 }
 
 .top-navigation{display:none;}
-
+.sidebar-error .icons{display: block;}
+.sidebar-error .success-text,.sidebar-collapsed .icons{display:none;}
+.sidebar-error .sidebar{width:4%;}
+.sidebar-error .top-menu ul li{padding-top:8px;}
+.sidebar-error .main{margin-left: 6%;width: 92.333333%;}
 /*--responsive--*/
 @media (max-width: 1330px){
     .sidebar h1 a {
@@ -211,6 +217,7 @@ span.menu {
     .sidebar {
         width: 19%;
     }
+
 
 }
 
@@ -286,13 +293,14 @@ span.menu {
     }
 }
 
+
 @media (max-width: 768px){
-    .sidebar{width: 100%;
+    .sidebar-error .sidebar,.sidebar-collapsed .sidebar{width: 100%;
         position: inherit;
         background: none;
         padding: 0;}
-    .top-menu li ul{display:none;}
-    .top-navigation {
+    .sidebar-error .top-menu li ul,.sidebar-collapsed .top-menu li ul{display:none;}
+    .sidebar-error .top-navigation,.sidebar-collapsed .top-navigation {
         display: block;
         padding:0 20px;
         cursor: pointer;
@@ -303,8 +311,10 @@ span.menu {
         margin: 0 auto;
         background-color: #333;
     }
-    .drop-navigation{display:none;}
-    .t-menu {
+    .sidebar-error .drop-navigation,.sidebar-collapsed .drop-navigation{display:none;}
+    .sidebar_top div,.top-menu .icons{display:none !important;}
+    .sidebar_top h1,.success-text{display:block !important;}
+    .sidebar-error .t-menu,.sidebar-collapsed  .t-menu{
         float: left;
         font-size: .7em;
         padding-top: 7px;
@@ -322,7 +332,7 @@ span.menu {
         width: 39%;
         font-size: 1em;
     }
-    .main{
+    .sidebar-error .main,.sidebar-collapsed .main{
         width: 94.333333%;
         padding: 0 2% 25px 2%;
         margin-left: 3%;

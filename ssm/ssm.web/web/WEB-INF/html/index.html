@@ -9,11 +9,6 @@
 	<link href="style/css/bootstrap/css/bootstrap.css" rel='stylesheet' type='text/css' />
 	<link href="style/css/index.css" rel='stylesheet' type='text/css' />
 	<link href="script/element-ui/css/eleIndex.css" rel="stylesheet" type='text/css'/>
-	<style>
-		.icons{display: block;}
-		.sidebar-error .success-text,.sidebar-error.sidebar_top{display:none;}
-		.sidebar-collapsed .icons{display:none;}
-	</style>
 </head>
 <body>
 
@@ -30,54 +25,83 @@
 
 
 <!--------------------------------------------- left ------------------------------------->
-<div class="col-md-2 sidebar">
+<div class="big-menu sidebar-collapsed"><!-- 加div hxb-->
+	<div class="col-md-2 sidebar">
 
-	<!-- logo -->
-	<div class="sidebar_top">
-		<h1><a href="index.html">RISS<span>NER</span></a></h1>
-	</div>
+		<!-- logo -->
+		<div class="sidebar_top">
+			<h1><a href="javascript:void(0)">RISS<span>NER</span></a></h1> <!-- 改href hxb-->
 
-	<!-- 菜单按钮-->
-	<div class="top-navigation clearfix">
-		<div class="t-menu">MENU</div>
-	</div>
-
-	<!-- 菜单 -->
-	<div class="drop-navigation hide1">
-		<div class="top-menu">
-			<ul>
+			<div style="margin-bottom: 35px;display:none"><!-- 加div hxb-->
+				<a href="javascript:void(0)">
+					<i class="el-icon-edit icons" ></i>
+				</a>
+			</div>
+		</div>
 
 
+		<!-- 菜单按钮-->
+		<div class="top-navigation clearfix">
+			<div class="t-menu">MENU</div>
+		</div>
 
 
-				<li class="active"><a href="javascript:void(0)" content="ssm/"><i class="el-icon-edit icons"></i><span class="success-text">用户管理</span></a><!--active控制目标菜单颜色--></li>
+		<!-- 菜单 -->
+		<div class="drop-navigation hide1">
+			<div class="top-menu">
+				<ul>
 
-				<li><a href="javascript:void(0)"><i class="el-icon-edit icons"></i><span class="success-text">权限管理</span></a><!--active控制目标菜单颜色--></li>
 
-				<li><a href="javascript:void(0)" content="demo/findUser"><i class="el-icon-edit icons"></i><span class="success-text">demo</span></a>
-					<!--<ul>
-						<li><a href="javascript:void(0)">Sunglasses</a></li>
-					</ul>-->
-				</li>
-			</ul>
+
+
+					<li>
+						<a href="javascript:void(0)" content="ssm/">
+							<i class="el-icon-edit icons"></i><!-- 加i标签 hxb-->
+							<span class="success-text">用户管理</span> <!-- 加span hxb-->
+						</a><!--active控制目标菜单颜色-->
+
+
+						<ul>
+							<li><a href="javascript:void(0)" content="login2.html">111</a></li>
+							<li><a href="#">Watches</a></li>
+							<li><a href="#">Sunglasses</a></li>
+						</ul>
+					</li>
+
+
+
+					<li>
+						<a href="javascript:void(0)">
+							<i class="el-icon-edit icons"></i>
+							<span class="success-text">权限管理</span>
+						</a><!--active控制目标菜单颜色--></li>
+
+
+					<li>
+						<a href="javascript:void(0)" content="demo/findUser">
+							<i class="el-icon-edit icons"></i>
+							<span class="success-text">demo</span>
+						</a>
+					</li>
+				</ul>
+			</div>
 		</div>
 	</div>
+
+
+
+
+	<!--------------------------------------------- right ------------------------------------->
+	<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" style="background:#fff;">
+	</div>
+
+
+
+	<!--------------------------------------------- else ------------------------------------->
+	<!-- div并排 -->
+	<div class="clearfix"></div>
+
 </div>
-
-
-
-
-<!--------------------------------------------- right ------------------------------------->
-<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" style="background:#fff;">
-</div>
-
-
-
-<!--------------------------------------------- else ------------------------------------->
-<!-- div并排 -->
-<div class="clearfix"></div>
-
-
 
 
 <!--------------------------------------------- script ------------------------------------->
@@ -90,7 +114,7 @@
 
 
     //缩小时的菜单
-	$( ".top-navigation" ).click(function() {
+    $( ".top-navigation" ).click(function() {
         var nav = $( ".drop-navigation" );
         if(nav.hasClass('hide1')){
             nav.removeClass("hide1").addClass("show");
@@ -111,14 +135,29 @@
 
 
     //局部刷新
-	$(".top-menu li").click(function(){
-		var links = $(this).find('a').attr("content");
+    $(".top-menu li").click(function(){
+        var links = $(this).find('a').attr("content");
 
-		if(links){
-			 history.pushState({},'aa',"#!"+links);
-			 $(".main").load(links,function(){});
-		}
+        if(links){
+            history.pushState({},'aa',"#!"+links);
+            $(".main").load(links,function(){});
+        }
     });
+
+
+
+	//加切换功能 hxb
+    //点击菜单大小菜单切换
+    $(".sidebar_top").click(function(){
+        var _this = $(this),bigMenu = $(".big-menu");
+        if(bigMenu.hasClass("sidebar-collapsed")){
+            _this.find("h1").hide();_this.find("div").show();
+            bigMenu.removeClass("sidebar-collapsed").addClass("sidebar-error");
+		}else{
+            _this.find("h1").show();_this.find("div").hide();
+            bigMenu.addClass("sidebar-collapsed").removeClass("sidebar-error");
+		}
+	})
 
 </script>
 </body>
