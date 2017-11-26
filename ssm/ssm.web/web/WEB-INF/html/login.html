@@ -15,11 +15,11 @@
 		<form class="form" onsubmit="return validated()" method="post" action="signIn">
 
 			<div>
-				<input type="text" placeholder="Username" name="userName">
+				<input type="text" placeholder="username" name="username">
 			</div>
 
 			<div>
-				<input type="password" placeholder="Password" name="passWord">
+				<input type="password" placeholder="password" name="password">
 			</div>
 
 			<button type="submit" id="login-button">Sign In</button>
@@ -63,35 +63,35 @@
  */
 function validated () {
 
-    var userName = $("input[name='userName']").val();
-    var passWord = $("input[name='passWord']").val();
+    var username = $("input[name='username']").val();
+    var password = $("input[name='password']").val();
 
-    if(userName && passWord)
+    if(username && password)
         return true;
     else
-       return validatedSytle(userName, passWord);
+       return validatedSytle(username, password);
 }
 
 
 
 /**
  * 校验样式
- * @param userName
- * @param passWord
+ * @param username
+ * @param password
  * @returns {boolean}
  */
-function validatedSytle(userName, passWord) {
+function validatedSytle(username, password) {
 
     var errorStyle = "<span class='error'>X</span>";
 
-    if(!userName && !passWord)
+    if(!username && !password)
     {
         $(".form div").eq(0).append(errorStyle );
         $(".form div").eq(1).append(errorStyle );
     }
-    else if(!userName)
+    else if(!username)
         $(".form div").eq(0).append(errorStyle );
-    else if(!passWord)
+    else if(!password)
         $(".form div").eq(1).append(errorStyle );
 
     return false;

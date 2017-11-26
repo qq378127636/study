@@ -1,5 +1,7 @@
 package com.login.controller;
 
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.subject.Subject;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -14,22 +16,17 @@ public class LoginController {
 
     /**
      * 登陆验证
+     *          这里把登陆和shiro认证的逻辑放在一起，原因是可以判断用户登陆状态，从而返回对应页面
+     *          例如，用户请求登陆页面时，如果已经登陆过，再次登陆的话，我们可以直接跳转到主页，这样更友好！
      */
-    @RequestMapping(value = "/signIn", method = RequestMethod.POST)
-    public String signIn(String userName, String passWord){
+    @RequestMapping("/signIn")
+    public String signIn(String username, String passpord){
 
+        //认证成功跳转到主页
+        if(SecurityUtils.getSubject().isAuthenticated())
+            return "redirect:index";
 
-        //验证通过：重定向到主页
-        if(userName != null && passWord != null){
-
-            SpringUtil.getSession().setAttribute("userName", userName);//存储session
-
-            return "redirect:/index";
-        }
-
-        //验证不通过：重定向到登陆页面
-        else
-            return "redirect:/login.html";
+        return "login";
     }
 
 
@@ -41,19 +38,6 @@ public class LoginController {
     public String index(){
 
         return "index";
-    }
-
-
-
-    /**
-     * 退出
-     */
-    @RequestMapping("/signOut")
-    public String signOut(){
-
-        SpringUtil.getSession().removeAttribute("userName");
-
-        return "redirect:/login.html";
     }
 }
 
