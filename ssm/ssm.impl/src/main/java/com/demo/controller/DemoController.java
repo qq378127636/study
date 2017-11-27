@@ -19,19 +19,22 @@ public class DemoController {
     @Autowired
     private IDemoService iDemoService;
 
+    @RequestMapping("/send_demo_page")
+    public String send_demo_Page() throws Exception {
+        return "demo/demo2";
+    }
+
+
     @RequestMapping("/findName")
     @ResponseBody
     public String findName() throws Exception {
         return iDemoService.findName(1);
     }
 
-    @RequestMapping("/findList2")
+    @RequestMapping("/findList")
     @ResponseBody
-    public String grid(@RequestParam("ids[]") String[] ids) throws Exception {
-        System.out.println(ids[0]);
-        System.out.println(ids[1]);
-        System.out.println("1");
-        return "";
+    public String findList2(String str) throws Exception {
+        return "123";
     }
 
 
