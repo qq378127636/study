@@ -55,8 +55,13 @@
 
 
 
+
 <script src="script/jquery/jquery.min.js"></script>
-<script >
+<script>
+
+//防止页面嵌套
+if($(".main").length){  location.reload()}
+
 
 /**
  * 表单校验

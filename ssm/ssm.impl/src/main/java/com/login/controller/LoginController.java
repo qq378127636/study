@@ -2,6 +2,7 @@ package com.login.controller;
 
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.subject.Subject;
+import org.apache.shiro.web.util.WebUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -21,7 +22,6 @@ public class LoginController {
      */
     @RequestMapping("/signIn")
     public String signIn(String username, String passpord){
-
         //认证成功跳转到主页
         if(SecurityUtils.getSubject().isAuthenticated())
             return "redirect:index";

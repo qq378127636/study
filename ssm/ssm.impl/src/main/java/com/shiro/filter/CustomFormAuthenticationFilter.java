@@ -14,7 +14,7 @@ import org.apache.shiro.web.util.WebUtils;
 public class CustomFormAuthenticationFilter extends FormAuthenticationFilter {
 
 
-	/**
+	/*
 	 * 认证成功跳转到指定地址
 	 * @param token
 	 * @param subject
@@ -23,12 +23,12 @@ public class CustomFormAuthenticationFilter extends FormAuthenticationFilter {
 	 * @return
 	 * @throws Exception
 	 */
-	@Override
+/*	@Override
 	protected boolean onLoginSuccess(AuthenticationToken token, Subject subject, ServletRequest request, ServletResponse response) throws Exception {
 
 		WebUtils.getAndClearSavedRequest(request);
 		WebUtils.redirectToSavedRequest(request,response,"/index");
 
 		return false;
-	}
+	}*/
 }
