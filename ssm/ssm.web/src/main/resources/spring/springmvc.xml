@@ -12,7 +12,10 @@
 	<!-- 扫描service、controller -->
 	<context:component-scan base-package="com.*.controller" />
 	<context:component-scan base-package="com.*.service.impl" />
-	
+
+	<!-- 全局异常处理器-->
+	<bean class="com.error.SsmExceptionResolver"></bean>
+
 	<!-- 注解驱动 -->
 	<mvc:annotation-driven/>
 	

@@ -98,6 +98,8 @@
 	<!-- div并排 -->
 	<div class="clearfix"></div>
 
+	<!-- 全局异常提示 -->
+	<div id="promptMessage"> </div>
 </div>
 
 
@@ -107,8 +109,8 @@
 <script src="script/element-ui/js/eleIndex.js"></script>
 
 <script>
-    // $(".main").load("grid.html",function(){});
 
+    // $(".main").load("grid.html",function(){});
 
     //缩小时的菜单
     $( ".top-navigation" ).click(function() {
@@ -154,7 +156,11 @@
             _this.find("h1").show();_this.find("div").hide();
             bigMenu.addClass("sidebar-collapsed").removeClass("sidebar-error");
 		}
-	})
+	});
+
+
+    //用于全局异常提示
+    var promptMessage = new Vue({el: '#promptMessage'});
 
 </script>
 </body>

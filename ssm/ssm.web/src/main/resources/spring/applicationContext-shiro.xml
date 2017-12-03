@@ -41,7 +41,6 @@
 				/style/**        = anon
 				/WEB-INF/html/** = anon
 
-
 				<!-- 请求 logout.action地址，shiro去清除session-->
 				/logout = logout
 
@@ -71,7 +70,7 @@
 	<bean id="sessionManager" class="org.apache.shiro.web.session.mgt.DefaultWebSessionManager">
 		<property name="sessionIdUrlRewritingEnabled" value="false" />
 		<!-- session的失效时长，单位毫秒 -->
-		<property name="globalSessionTimeout" value="500000"/>
+		<property name="globalSessionTimeout" value="600000"/>
 		<!-- 删除失效的session -->
 		<property name="deleteInvalidSessions" value="true"/>
 	</bean>

@@ -5,7 +5,6 @@ import com.demo.service.IDemoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import utils.SpringUtil;
 
@@ -21,6 +20,10 @@ public class DemoController {
 
     @RequestMapping("/send_demo_page")
     public String send_demo_Page() throws Exception {
+
+        if (1==1)
+            throw new ArrayIndexOutOfBoundsException("aaaabbbbcccc");
+
         return "demo/demo2";
     }
 
@@ -54,6 +57,10 @@ public class DemoController {
      * 参数传递
      * String[]、int[]数据类型需要使用@RequestParam("ids[]")
      */
+
+    public static void main(String[] args) {
+        System.out.println("a" + "\r\n" +"b");
+    }
 }
 
 

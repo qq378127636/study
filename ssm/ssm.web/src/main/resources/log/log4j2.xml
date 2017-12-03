@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--日志级别以及优先级排序: OFF > FATAL > ERROR > WARN > INFO > DEBUG > TRACE > ALL -->
+
+<!--
+    status : 这个用于设置log4j2自身内部的信息输出,可以不设置,当设置成trace时,会看到log4j2内部各种详细输出
+    monitorInterval : Log4j能够自动检测修改配置文件和重新配置本身, 设置间隔秒数。此处表示每隔3000秒重读一次配置文件
+-->
+<Configuration status="OFF" monitorInterval="3000">
+
+
+    <Properties>
+        <!-- 配置日志文件输出目录 -->
+        <Property name="LOG_HOME">/logs/ssm/</Property>
+    </Properties>
+
+
+    <Appenders>
+
+        <!-- 输出控制台的配置 -->
+        <Console name="Console" target="SYSTEM_OUT">
+            <!-- 日志输出的格式: -->
+            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
+        </Console>
+
+
+        <!-- INFO  name : appenders的名称， fileName : 指定当前日志文件的位置和文件名称，  filePattern : 指定当发生Rolling时，文件的转移和重命名规则-->
+        <RollingRandomAccessFile name="INFO" fileName="${LOG_HOME}/info.log" filePattern="${LOG_HOME}/info_%d{yyyy-MM-dd}_%i.log">
+            <Filters>
+                <ThresholdFilter level="error" onMatch="DENY" onMismatch="NEUTRAL"/>
+                <ThresholdFilter level="warn" onMatch="DENY" onMismatch="NEUTRAL"/>
+                <ThresholdFilter level="info" onMatch="ACCEPT" onMismatch="DENY"/>
+            </Filters>
+            <PatternLayout pattern="%d{yyyy-MM-dd 'at' HH:mm:ss z} %-5level %class{36} %L %M - %msg%xEx%n"/>
+            <Policies>
+                <!-- 需要和filePattern结合使用：filePattern中配置的文件重命名规则是%d{yyyy-MM-dd}.log，最小的时间粒度是dd，即天，TimeBasedTriggeringPolicy指定的size是1，结合起来就是每1天生成一个新文件-->
+                <TimeBasedTriggeringPolicy interval="1"/>
+                <!-- 文件体积大于size指定的值时，触发Rolling, 通过filePattern中的%i 来指定生成次序 -->
+                <SizeBasedTriggeringPolicy size="100M"/>
+            </Policies>
+            <!-- 文件夹下最多保存的INFO文件个数 -->
+            <DefaultRolloverStrategy max="7"/>
+        </RollingRandomAccessFile>
+
+
+        <!--WARN-->
+        <RollingRandomAccessFile name="WARN" fileName="${LOG_HOME}/warn.log" filePattern="${LOG_HOME}/warn_%d{yyyy-MM-dd}_%i.log">
+            <Filters>
+                <ThresholdFilter level="error" onMatch="DENY" onMismatch="NEUTRAL"/>
+                <ThresholdFilter level="warn" onMatch="ACCEPT" onMismatch="DENY"/>
+            </Filters>
+            <PatternLayout pattern="%d{yyyy-MM-dd 'at' HH:mm:ss z} %-5level %class{36} %L %M - %msg%xEx%n"/>
+            <Policies>
+                <TimeBasedTriggeringPolicy interval="1"/>
+                <SizeBasedTriggeringPolicy size="100MB"/>
+            </Policies>
+            <DefaultRolloverStrategy max="7"/>
+        </RollingRandomAccessFile>
+
+
+        <!--ERROR-->
+        <RollingRandomAccessFile name="ERROR" fileName="${LOG_HOME}/error.log" filePattern="${LOG_HOME}/error_%d{yyyy-MM-dd}_%i.log">
+            <Filters>
+                <ThresholdFilter level="error" onMatch="ACCEPT" onMismatch="DENY"/>
+            </Filters>
+            <PatternLayout pattern="%d{yyyy-MM-dd 'at' HH:mm:ss z} %-5level %class{36} %L %M - %msg%xEx%n"/>
+            <Policies>
+                <TimeBasedTriggeringPolicy interval="1"/>
+                <SizeBasedTriggeringPolicy size="100MB"/>
+            </Policies>
+            <DefaultRolloverStrategy max="7"/>
+        </RollingRandomAccessFile>
+
+
+    </Appenders>
+
+
+    <!--logger，只有定义了logger并引入的appender，appender才会生效-->
+    <Loggers>
+
+        <!--过滤掉spring和mybatis的一些无用的DEBUG信息:   additivity=false 代表此logger不会再向Root中记录日志
+        <logger name="org.springframework" level="INFO"  additivity="false"></logger>
+        <logger name="org.mybatis" level="INFO"  additivity="false"></logger>
+        -->
+
+        <!-- 这儿为trace表示什么都可以打印出来了,其他几个级别分别为：TRACE、DEBUG、INFO、WARN、ERROR和FATAL -->
+        <Root level="debug">
+            <Appender-Ref ref="Console"/>
+            <Appender-Ref ref="INFO"/>
+            <Appender-Ref ref="WARN"/>
+            <Appender-Ref ref="ERROR"/>
+        </Root>
+    </Loggers>
+
+</Configuration>
+
+
+
+
+
+
+
+
+
+
+
+<!-- ============================================================ log4j2介绍：============================================================
+
+slf4:
+	概念：slf4j是一个为Java程序提供日志输出的统一接口
+	优势：
+		 1、支持各种日志系统：org.apache.log4j.Logger、java.util.logging.Logger，间接地与日志系统解耦。
+		 2、节省内存，如log4j2使用占位符的概念：LOGGER.info("Error message is: {}", message);
+
+
+log4j2:
+	性能比log4j提高10倍(官方)
+	与sl4j整合：
+        1、添加依赖
+        slf4j
+        <dependency>
+        <groupId>org.slf4j</groupId>
+        <artifactId>slf4j-api</artifactId>
+        <version>${slf4j.version}</version>
+        </dependency>
+        <dependency>
+        <groupId>org.slf4j</groupId>
+        <artifactId>jcl-over-slf4j</artifactId>
+        <version>${slf4j.version}</version>
+        </dependency>
+
+        slf4j 与log4j的桥梁
+        <dependency>
+        <groupId>org.apache.logging.log4j</groupId>
+        <artifactId>log4j-slf4j-impl</artifactId>
+        <version>${log4j.version}</version>
+        </dependency>
+
+        log4j
+        <dependency>
+        <groupId>org.apache.logging.log4j</groupId>
+        <artifactId>log4j-api</artifactId>
+        <version>${log4j.version}</version>
+        </dependency>
+        <dependency>
+        <groupId>org.apache.logging.log4j</groupId>
+        <artifactId>log4j-core</artifactId>
+        <version>${log4j.version}</version>
+        </dependency>
+
+
+
+        web工程需要包含log4j-web，非web工程不需要
+        <dependency>
+        <groupId>org.apache.logging.log4j</groupId>
+        <artifactId>log4j-web</artifactId>
+        <version>2.4.1</version>
+        </dependency>
+
+        需要使用log4j2的AsyncLogger需要包含disruptor
+        <dependency>
+        <groupId>com.lmax</groupId>
+        <artifactId>disruptor</artifactId>
+        <version>3.2.0</version>
+        </dependency>
+
+        2、指定位置
+        <context-param>
+        <param-name>log4jConfiguration</param-name>
+        <param-value>/WEB-INF/classes/log4j2.xml</param-value>
+        </context-param>
+        <listener>
+            <listener-class>org.apache.logging.log4j.web.Log4jServletContextListener</listener-class>
+        </listener>
+-->
+
+
+
+
+<!-- ============================================================ 日志格式： ============================================================
+
+    %d{yyyy-MM-dd HH:mm:ss, SSS} : 日志生产时间,输出到毫秒的时间
+    %-5level : 输出日志级别，-5表示左对齐并且固定输出5个字符，如果不足在右边补0
+    %c : logger的名称(%logger)
+    %t : 输出当前线程名称
+    %p : 日志输出格式
+    %m : 日志内容，即 logger.info("message")
+    %n : 换行符
+    %C : Java类名(%F)
+    %L : 行号
+    %M : 方法名
+    %l : 输出语句所在的行数, 包括类名、方法名、文件名、行数
+    hostName : 本地机器名
+    hostAddress : 本地ip地址
+-->

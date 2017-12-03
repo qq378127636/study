@@ -1,18 +1,17 @@
-package com.login.controller;
+package com.shiro.controller;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.apache.shiro.SecurityUtils;
-import org.apache.shiro.subject.Subject;
-import org.apache.shiro.web.util.WebUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import utils.SpringUtil;
-
 
 
 @Controller
 public class LoginController {
 
+    static Logger logger = LogManager.getLogger(LoginController.class);
 
 
     /**
@@ -22,6 +21,7 @@ public class LoginController {
      */
     @RequestMapping("/signIn")
     public String signIn(String username, String passpord){
+
         //认证成功跳转到主页
         if(SecurityUtils.getSubject().isAuthenticated())
             return "redirect:index";
@@ -34,11 +34,12 @@ public class LoginController {
     /**
      * 主页跳转
      */
-    @RequestMapping("/index")
+    @RequestMapping("index")
     public String index(){
 
         return "index";
     }
+
 }
 
 
