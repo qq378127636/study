@@ -74,16 +74,11 @@ a:focus {
 }
 
 
-
+.sidebar-error .icon-right{display:none;}
 .sidebar{
     background:#fff;
     top: 0;
-    padding-right:0;
-    padding-top: 41px;
-}
-
-.sidebar_top {
-    text-align: center;
+    padding:40px 1%;
 }
 
 .hide1{display:block;}
@@ -104,14 +99,19 @@ span.menu {
     display:block;
 }
 
-.top-menu ul li a{
+.sidebar-collapsed .top-menu ul li a{
     display:block;
+    text-align:center;}
+.top-menu ul li a{
     color:#333;
-    padding-bottom:1.5em;
+    padding:15px;
     font-family: 'OpenSans-Bold';
     font-size:0.9em;
-    text-align:center;
 }
+.icon-right{    position: absolute;
+    margin-top: 2px;
+    right:0;
+    font-size: 1em;}
 
 .top-menu ul li.active a,.top-menu ul li a:hover{
     color:#83d5d1;
@@ -127,17 +127,16 @@ span.menu {
 }
 
 .main {
-    margin-left: 18.666667%;
-    width: 79.333333%;
+    margin-left: 14%;
+    width: 84%;
     margin-top: 60px;
     margin-bottom: 31px;
     border-radius: 10px;
+    margin-right: 2%;
 }
 
 @media (max-width: 1080px){
-    .sidebar {
-        width: 21%;
-    }
+
     .main {
         margin-left: 21.666667%;
         width: 78.333333%;
@@ -168,11 +167,11 @@ span.menu {
 }
 
 .top-menu li ul li{background:#eee;}
-
-.top-menu li ul li a{background:#eee; color:#333 !important;}
+.sidebar-error .top-menu li ul li{padding:15px 0;}
+.top-menu li ul li{background:#fff;}
 
 .sidebar h1 a{
-    font-size: 1.2em;
+    font-size: 0.8em;
     font-weight: 700;
     margin-bottom: 1em;
     display: inline-block;
@@ -189,98 +188,70 @@ span.menu {
 }
 
 .top-navigation{display:none;}
-.sidebar-error .icons{display: block;}
-.sidebar-error .success-text,.sidebar-collapsed .icons{display:none;}
-.sidebar-error .sidebar{width:4%;}
-.sidebar-error .top-menu ul li{padding-top:8px;}
-.sidebar-error .main{margin-left: 6%;width: 92.333333%;}
+.sidebar-error .icons{display: block;font-size:1.5em;}
+.sidebar_top .icons{color:#333;}
+.sidebar-error .success-text{display:none;}
+.sidebar-collapsed .icons{
+    margin-bottom:10px;display:block; font-size:1.3em;}
+
+.sidebar-error .main{margin-left: 7%;width: 91%;}
 /*--responsive--*/
-@media (max-width: 1330px){
-    .sidebar h1 a {
-        margin-left: 7px;
-        font-size: 1.1em;
-        padding: 13px 14px;
-    }
-}
 
-@media (max-width: 1280px){
-    .sidebar h1 a {
-        font-size: 1em;
-    }
 
-}
+
 
 @media (max-width: 1440px){
-    .main{    margin-left: 22%;
-        width: 75.333333%;
+    .main{    margin-left: 15%;
+        width: 82%;
         padding: 3% 0 25px 3%;}
-    .sidebar {
-        width: 19%;
-    }
+
 
 
 }
+@media (max-width: 1330px){
+    .main{    margin-left: 16%;
+        width: 82%;
+        padding: 3% 0 25px 3%;}
 
+
+
+}
 @media (max-width: 1200px){
-    .sidebar h1 a {
-        font-size: 0.9em;
-    }
-    .sidebar {
-        width: 20%;
 
-    }
-    .main{    margin-left: 23%;
-        width: 74.333333%;
+
+    .main{    margin-left: 17%;
+        width: 81%;
         padding: 0 2% 25px 2%;}
 }
 
 @media (max-width: 1080px){
-    .sidebar {
-        width: 22%;
 
-    }
-    .main{    margin-left: 25%;
-        width: 72.333333%;
+    .main{    margin-left:19%;
+        width: 79%;
         padding: 0 2% 25px 2%;}
-    .sidebar h1 a {
-        font-size: 1em;
-    }
+
 }
 
-@media (max-width: 960px){
-    .sidebar h1 a {
-        margin-left: 6px;
-        font-size: 0.875em;
-        padding: 12px 12px;
-    }
-}
 
-@media (max-width: 900px){
-    .sidebar h1 a {
-        margin-left: 10px;
-    }
+
+@media (max-width: 930px){
+
     .main{
-        margin-left: 29%;
-        width: 67.333333%;
+        margin-left: 21%;
+        width: 77%;
         padding: 0 2% 25px 2%;
     }
-    .sidebar h1 a {
-        font-size: 0.875em;
-    }
-    .sidebar h1 a {
-        padding: 12px 14px;
-    }
-    .sidebar {
-        width: 25%;
-    }
+
+
 }
 
 @media (max-width: 860px){
     .top-navigation{display:none;}
-    .sidebar h1 a {
-        margin-left: 4px;
-        font-size: 0.8em;
-        padding: 10px 10px;
+
+    .main{
+        margin-left: 22%;
+        width: 76%;
+        padding: 0 2% 25px 2%;
     }
 }
 
@@ -288,9 +259,7 @@ span.menu {
     .sidebar h1 a {
         font-size: 0.8em;
     }
-    .sidebar {
-        width: 25%;
-    }
+
 }
 
 
