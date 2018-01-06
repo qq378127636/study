@@ -7,7 +7,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
 	<link href="style/css/bootstrap/css/bootstrap.css" rel='stylesheet' type='text/css' />
-	<link href="style/css/index.css" rel='stylesheet' type='text/css' />
+	<link href="style/css/index.css" 				 rel='stylesheet' type='text/css' />
 	<link href="script/element-ui/css/eleIndex.css" rel="stylesheet" type='text/css'/>
 </head>
 <body>
@@ -61,7 +61,7 @@
 
 						<ul>
 							<li><a href="javascript:void(0)" content="login2.html">111</a></li>
-							<li><a href="#">Watches</a></li>
+							<li><a href="#">用 户 管 理</a></li>
 							<li><a href="#">Sunglasses</a></li>
 						</ul>
 					</li>
@@ -69,10 +69,11 @@
 
 
 					<li>
-						<a href="javascript:void(0)">
+						<a href="javascript:void(0)" v-focus="'abc'">
 							<i class="el-icon-edit icons"></i>
 							<span class="success-text">权 限 管 理</span>
-						</a><!--active控制目标菜单颜色--></li>
+						</a><!--active控制目标菜单颜色-->
+					</li>
 
 
 					<li>
@@ -110,6 +111,27 @@
 <script src="script/element-ui/js/eleIndex.js"></script>
 
 <script>
+
+
+	//权限控制
+    // 注册一个全局自定义指令 `v-focus`
+    Vue.directive('focus', {
+        // 当被绑定的元素插入到 DOM 中时……
+        bind: function (el, binding) {debugger
+            // 聚焦元素
+			if(binding.value == "abc"){
+            	$(el).hide();
+			}
+        }
+    });
+
+
+    var app = new Vue({
+        el: ".top-menu"
+    });
+
+
+
 
     // $(".main").load("grid.html",function(){});
 

@@ -21,9 +21,6 @@ public class DemoController {
     @RequestMapping("/send_demo_page")
     public String send_demo_Page() throws Exception {
 
-        if (1==1)
-            throw new ArrayIndexOutOfBoundsException("aaaabbbbcccc");
-
         return "demo/demo2";
     }
 

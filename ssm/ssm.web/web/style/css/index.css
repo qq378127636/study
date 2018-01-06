@@ -164,6 +164,7 @@ span.menu {
 .top-menu li ul {
     opacity: 0;
     height: 0;
+    width:100%;
 }
 
 .top-menu li ul li{background:#eee;}
@@ -194,7 +195,7 @@ span.menu {
 .sidebar-collapsed .icons{
     margin-bottom:10px;display:block; font-size:1.3em;}
 
-.sidebar-error .main{margin-left: 7%;width: 91%;}
+.sidebar-error .main{margin-left: 6%;width: 92%;}
 /*--responsive--*/
 
 
